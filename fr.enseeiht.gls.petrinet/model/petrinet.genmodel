@@ -10,6 +10,10 @@
   <testsDirectory xsi:nil="true"/>
   <genPackages prefix="Petrinet" basePackage="fr.enseeiht.gls" disposableProviderFactory="true"
       ecorePackage="petrinet.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="petrinet.ecore#//TypeOfArc">
+      <genEnumLiterals ecoreEnumLiteral="petrinet.ecore#//TypeOfArc/Normal"/>
+      <genEnumLiterals ecoreEnumLiteral="petrinet.ecore#//TypeOfArc/Read_arc"/>
+    </genEnums>
     <genClasses ecoreClass="petrinet.ecore#//PetriNet">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference petrinet.ecore#//PetriNet/Element"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute petrinet.ecore#//PetriNet/name"/>
@@ -24,8 +28,11 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference petrinet.ecore#//Arc/to"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference petrinet.ecore#//Arc/from"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute petrinet.ecore#//Arc/weight"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute petrinet.ecore#//Arc/type"/>
     </genClasses>
-    <genClasses ecoreClass="petrinet.ecore#//Place"/>
+    <genClasses ecoreClass="petrinet.ecore#//Place">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute petrinet.ecore#//Place/token"/>
+    </genClasses>
     <genClasses ecoreClass="petrinet.ecore#//Transition"/>
   </genPackages>
 </genmodel:GenModel>
