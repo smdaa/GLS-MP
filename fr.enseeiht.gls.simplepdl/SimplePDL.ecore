@@ -19,8 +19,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="linksToSuccessors" upperBound="-1"
         eType="#//WorkSequence" eOpposite="#//WorkSequence/predecessor"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ressources" upperBound="-1"
-        eType="#//Ressources" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="necessary_ressources" upperBound="-1"
+        eType="#//Ressource" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WorkSequence" eSuperTypes="#//ProcessElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="linkType" lowerBound="1"
@@ -35,10 +35,16 @@
         eType="#//ProcessElement"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Ressources" eSuperTypes="#//ProcessElement">
+  <eClassifiers xsi:type="ecore:EClass" name="Ressource" eSuperTypes="#//ProcessElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Quantite" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="Used_by" lowerBound="1"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="quantite" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Ressource_Usage" eSuperTypes="#//ProcessElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="used_ressource" lowerBound="1"
+        eType="#//Ressource"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="user_WD" lowerBound="1"
         eType="#//WorkDefinition"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="quantite" lowerBound="1"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
 </ecore:EPackage>
