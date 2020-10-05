@@ -9,5 +9,34 @@ context PetriNet
 --
 inv NonNull_Element('The \'Element\' property of "' + self.toString() + '" is null'):
 	Element <> null
+	
+context Arc
+inv Arc_non_reflexif:
+	self.to <> self.from
 
+inv Place_Arc_Transition_Arc_Place:
+	-- is the Arc following : Place_Arc_Transition_Arc_Place?
+	(self.from.oclIsTypeOf(Place) and self.to.oclIsTypeOf(Transition)) or (self.from.oclIsTypeOf(Transition) and self.to.oclIsTypeOf(Place))
+	
+inv Weight_positif:
+	-- is the weight positive?
+	self.weight >0
+
+context Place
+
+inv Nb_jetons_positif:
+	-- is the number of tokens positive?
+	self.token>0
+
+context Node	
+inv nameOfNodeIsDefined:
+	-- is the name of Node correct?
+	if self.name.oclIsUndefined() then false 
+	else self.name.size() > 0 endif	
+	
+context PetriNet
+inv nameOfNetIsDefined:
+	-- is the name of the Net correct?
+	if self.name.oclIsUndefined() then false 
+	else self.name.size() > 0 endif	
 endpackage

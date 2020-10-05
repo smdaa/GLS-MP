@@ -28,5 +28,5 @@
 
  le nom d’une node doit être composé d’au moins un caractère.
 
- deux childs différentes d’un PetriNet_Element ne peuvent pas avoir le même nom.
+ deux nodes différentne peuvent pas avoir le même nom.
  
