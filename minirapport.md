@@ -18,6 +18,10 @@
 
 - contraintes OCL :
 
+ le from d'un arc <> le to d'un arc
+
+ le from d'un arc est une place le to d'un arc est une transition 
+
  le poids d'un arc est positive
 
  le nbre des jetons dans une place est postive
