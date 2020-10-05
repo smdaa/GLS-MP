@@ -1,0 +1,13 @@
+import 'PetriNet.ecore'
+
+package petrinet
+
+context PetriNet
+--
+-- example invariant with a custom error message to verify that
+-- the 'Element' property of all 'petrinet::PetriNet' instances is non-null
+--
+inv NonNull_Element('The \'Element\' property of "' + self.toString() + '" is null'):
+	Element <> null
+
+endpackage
