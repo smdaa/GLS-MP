@@ -17,6 +17,7 @@
 # PetriNet
 
 - contraintes OCL :
+
  le poids d'un arc est positive
 
  le nbre des jetons dans une place est postive
