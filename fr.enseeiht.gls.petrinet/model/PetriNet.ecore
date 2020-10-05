@@ -26,7 +26,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Transition" eSuperTypes="#//Node"/>
-  <eClassifiers xsi:type="ecore:EEnum" name="TypeOfArc" instanceClassName="">
+  <eClassifiers xsi:type="ecore:EEnum" name="TypeOfArc" instanceTypeName="TypeOfArc">
     <eLiterals name="Normal"/>
     <eLiterals name="Read_arc" value="1" literal="Read_arc"/>
   </eClassifiers>
