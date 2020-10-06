@@ -12,10 +12,10 @@ inv NonNull_name('The \'name\' property of "' + self.toString() + '" is null'):
 	
 	
 context WorkSequence
-
 	inv notReflexive: self.predecessor <> self.successor
 	
 context WorkDefinition
+
 inv uniqNames: self.Process.processElements
 ->select(pe | pe.oclIsKindOf(WorkDefinition))
 ->collect(pe | pe.oclAsType(WorkDefinition))

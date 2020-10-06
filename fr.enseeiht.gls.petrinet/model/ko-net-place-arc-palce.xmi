@@ -8,7 +8,7 @@
   <Element xsi:type="petrinet:Place"
       out="//@Element.2"
       name="place 1"
-      token="1"/>
+      token="-1"/>
   <Element xsi:type="petrinet:Place"
       in="//@Element.2"
       name="place 2"/>

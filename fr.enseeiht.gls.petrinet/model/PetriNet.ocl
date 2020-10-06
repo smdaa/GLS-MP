@@ -35,8 +35,10 @@ inv nameOfNodeIsDefined:
 	else self.name.size() > 0 endif	
 	
 context PetriNet
+
 inv nameOfNetIsDefined:
 	-- is the name of the Net correct?
 	if self.name.oclIsUndefined() then false 
 	else self.name.size() > 0 endif	
+	
 endpackage
