@@ -20,13 +20,13 @@ inv Place_Arc_Transition_Arc_Place:
 	
 inv Weight_positif:
 	-- is the weight positive?
-	self.weight >0
+	self.weight >= 0
 
 context Place
 
 inv Nb_jetons_positif:
 	-- is the number of tokens positive?
-	self.token>0
+	self.token >= 0
 
 context Node	
 inv nameOfNodeIsDefined:
