@@ -10,7 +10,12 @@
 
  Le nom d’une resource doit être composé d’au moins un caractère.
 
- La quantité du used_ressource est <= a la quantité de Ressource 
+ deux ressources ne peuvent pas avoir le même nom.
+ 
+ la quantité d'une ressource doit être >= 0 TODO
+ 
+ la quantité d'un ressource utilisé par une activité doit être inferieur ou égale à la quantité disponible
+
 
  
  
@@ -18,13 +23,11 @@
 
 - contraintes OCL :
 
- le from d'un arc <> le to d'un arc
+ un arc doit suivre le modele suivant place arc transition arc place
 
- le from d'un arc est une place le to d'un arc est une transition 
-
- le poids d'un arc est positive
-
- le nbre des jetons dans une place est postive
+ le poids d'un arc ne peut pas être nul (sinon l'arc ne sert à rien)
+ 
+ le nombre des jetons dans une place est postive
 
  le nom d’une node doit être composé d’au moins un caractère.
 

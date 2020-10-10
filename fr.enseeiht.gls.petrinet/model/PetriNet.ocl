@@ -8,37 +8,34 @@ context PetriNet
 -- the 'Element' property of all 'petrinet::PetriNet' instances is non-null
 --
 inv NonNull_Element('The \'Element\' property of "' + self.toString() + '" is null'):
-	Element <> null
-	
-context Arc
-inv Arc_non_reflexif:
-	self.to <> self.from
+	Element <> null	
 
-inv Place_Arc_Transition_Arc_Place:
-	-- is the Arc following : Place_Arc_Transition_Arc_Place?
+context Arc
+	--un arc doit suivre le modele suivant place arc transition arc place
+	inv Place_Arc_Transition_Arc_Place:
 	(self.from.oclIsTypeOf(Place) and self.to.oclIsTypeOf(Transition)) or (self.from.oclIsTypeOf(Transition) and self.to.oclIsTypeOf(Place))
-	
-inv Weight_positif:
-	-- is the weight positive?
-	self.weight >= 0
+
+context Arc	
+	-- le poids d'un arc ne peut pas être nul (sinon l'arc ne sert à rien)
+	inv Weight_positif:
+	self.weight > 0
 
 context Place
-
-inv Nb_jetons_positif:
-	-- is the number of tokens positive?
+	--le nombre des jetons dans une place est postive
+	inv Nb_jetons_positif:
 	self.token >= 0
 
-context Node	
-inv nameOfNodeIsDefined:
-	-- is the name of Node correct?
+context Node
+	--le nom d’une node doit être composé d’au moins un caractère.
+	inv nameOfNodeIsDefined:
 	if self.name.oclIsUndefined() then false 
 	else self.name.size() > 0 endif	
-	
-context PetriNet
 
-inv nameOfNetIsDefined:
-	-- is the name of the Net correct?
-	if self.name.oclIsUndefined() then false 
-	else self.name.size() > 0 endif	
+--context Node	
+	--deux nodes différentne peuvent pas avoir le même nom.
+	--inv NuniqNames: self.PetriNet.PetriNet_Element
+	---> select(n | n.oclIsKindOf(Node))
+	--->collect(n | n.oclAsType(Node))
+	--->forAll(n | self = n or self.name <> n.name)
 	
 endpackage
