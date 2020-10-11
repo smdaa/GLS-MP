@@ -23,14 +23,14 @@ context WorkDefinition
 	->forAll(w | self = w or self.name <> w.name)
 
 context WorkDefinition
-inv WDnameIsDefined:
 	-- le nom d’une activité doit être composé d’au moins un caractère.
+	inv WDnameIsDefined:
 	if self.name.oclIsUndefined() then false 
 	else self.name.size() > 0 endif
 
 context Ressource
-inv RnameIsDefined:
 	--Le nom d’une resource doit être composé d’au moins un caractère.
+	inv RnameIsDefined:
 	if self.name.oclIsUndefined() then false 
 	else self.name.size() > 0 endif
 	
@@ -45,12 +45,12 @@ context Ressource
 	--la quantité d'une ressource doit être >= 0
 	inv PositiveQ : self.quantite >= 0
 	
---context Ressource_Usage 
+context Ressource_Usage 
 	--la quantité d'une ressource usé doit être > 0
-	--inv PositiveUQ : 
+	inv PositiveUQ : self.quantite > 0
 	
---context Ressource_Usage
+context Ressource_Usage
 	--la quantité d'un ressource utilisé par une activité doit être inferieur ou égale à la quantité disponible
-	--inv PossibleUsage : self.user_WD.necessary_ressources <= self.used_ressource.quantite
-	
+	inv PossibleUsage : self.quantite <= self.used_ressource.quantite
+
 endpackage

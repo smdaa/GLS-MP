@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<simplepdl:Process
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:simplepdl="http://simplepdl"
+    xsi:schemaLocation="http://simplepdl SimplePDL.ecore"
+    name="bad ressource user">
+  <processElements
+      xsi:type="simplepdl:WorkDefinition"
+      name="Dev"/>
+  <processElements
+      xsi:type="simplepdl:Ressource"
+      name="Computer"
+      quantite="2"/>
+  <processElements
+      xsi:type="simplepdl:Ressource_Usage"
+      used_ressource="//@processElements.1"
+      user_WD="//@processElements.0"
+      quantite="4"/>
+</simplepdl:Process>

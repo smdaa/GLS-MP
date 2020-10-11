@@ -31,11 +31,16 @@ context Node
 	if self.name.oclIsUndefined() then false 
 	else self.name.size() > 0 endif	
 
---context Node	
+context Node	
 	--deux nodes différentne peuvent pas avoir le même nom.
-	--inv NuniqNames: self.PetriNet.PetriNet_Element
-	---> select(n | n.oclIsKindOf(Node))
-	--->collect(n | n.oclAsType(Node))
-	--->forAll(n | self = n or self.name <> n.name)
+	inv NuniqNames: Node.allInstances()
+	-> select(n | n.name = self.name)
+	-> size() = 1
 	
+context PetriNet
+	--le nom d’un réseau Petri doit être composé d’au moins un caractère.
+	inv nameOfPetriNetIsDefined :
+	if self.name.oclIsUndefined() then false 
+	else self.name.size() > 0 endif	
+		
 endpackage
