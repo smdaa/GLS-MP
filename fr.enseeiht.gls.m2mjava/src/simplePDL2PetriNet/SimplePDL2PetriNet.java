@@ -2,6 +2,7 @@ package simplePDL2PetriNet;
 
 import java.io.IOException;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.URI;
@@ -15,134 +16,174 @@ import simplepdl.Process;
 import petrinet.*;
 
 public class SimplePDL2PetriNet {
-	
+
 	public static void main(String[] args) {
 		
-		// Charger le package SimplePDL afin de l'enregistrer dans le registre d'Eclipse.
+		System.out.println("Working Directory = " + System.getProperty("user.dir"));
+
+		// Charger le package SimplePDL afin de l'enregistrer dans le registre
+		// d'Eclipse.
 		SimplepdlPackage packageInstancePDL = SimplepdlPackage.eINSTANCE;
-		
+
 		// Charger le package PetriNet afin de l'enregistrer dans le registre d'Eclipse.
 		PetrinetPackage packageInstanceNet = PetrinetPackage.eINSTANCE;
-		
+
 		// Enregistrer l'extension ".xmi" comme devant Ãªtre ouverte Ã 
 		// l'aide d'un objet "XMIResourceFactoryImpl"
 		Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
 		Map<String, Object> m = reg.getExtensionToFactoryMap();
 		m.put("xmi", new XMIResourceFactoryImpl());
-		
+
 		// Créer un objet resourceSetImpl1 qui contiendra le modele simplePDL
 		ResourceSet resSet1 = new ResourceSetImpl();
-				
+
 		// Charger la ressource (notre modéle)
 		URI modelURI = URI.createURI("models/Process-exemple.xmi");
+		if (args.length == 1) {
+			modelURI = URI.createURI("models/" + args[0]);
+		}
 		Resource resource1 = resSet1.getResource(modelURI, true);
-		
+
 		// Créer un objet resourceSetImpl2 qui contiendra le modele PetriNet
 		ResourceSet resSet2 = new ResourceSetImpl();
-		
+
 		// Définir le modèle simplepdl
 		URI modelURIbis = URI.createURI("models/ConvertedProcess-exemple.xmi");
 		Resource resource2 = resSet2.createResource(modelURIbis);
-		
+
 		// Récupérer le premier élément du modéle (élément racine)
 		Process process = (Process) resource1.getContents().get(0);
-		
+
 		// La fabrique pour fabriquer les éléments de PetriNet
 		PetrinetFactory myFactory = PetrinetFactory.eINSTANCE;
-		
-		//créer une petriNet
+
+		// créer une petriNet
 		PetriNet petrinet = myFactory.createPetriNet();
-		
+
 		// on nome le reseau petri
 		petrinet.setName(process.getName());
-		
+
 		resource2.getContents().add(petrinet);
+
+		// hash map pour un recherche efficace
+		Map<String, Place> places = new HashMap<String, Place>();
+		Map<String, Transition> transitions = new HashMap<String, Transition>();
+
 		
+		// convertir les workdefenitions
 		for (Object o : process.getProcessElements()) {
 			if (o instanceof WorkDefinition) {
-				
-				// on crée 3 places NotStarted Started Finished
-				Place WD_NotStarted = myFactory.createPlace();
-				Place WD_Running = myFactory.createPlace();
-				Place WD_Finished = myFactory.createPlace();
-				
-				WD_NotStarted.setName(((WorkDefinition) o).getName() + "_NotStarted");
-				WD_Running.setName(((WorkDefinition) o).getName() + "_Running");
-				WD_Finished.setName(((WorkDefinition) o).getName() + "_Finished");
-				
+
+				// on crée 4 places NotStarted Started Running et Finished
+				Place wd_ready = myFactory.createPlace();
+				Place wd_started = myFactory.createPlace();
+				Place wd_running = myFactory.createPlace();
+				Place wd_finished = myFactory.createPlace();
+
+				wd_ready.setName(((WorkDefinition) o).getName() + "_ready");
+				wd_started.setName(((WorkDefinition) o).getName() + "_started");
+				wd_running.setName(((WorkDefinition) o).getName() + "_running");
+				wd_finished.setName(((WorkDefinition) o).getName() + "_finished");
+
+				places.put(wd_finished.getName(), wd_finished);
+				places.put(wd_started.getName(), wd_started);
+
+				petrinet.getElement().add(wd_ready);
+				petrinet.getElement().add(wd_started);
+				petrinet.getElement().add(wd_running);
+				petrinet.getElement().add(wd_finished);
+
 				// on crée 2 transitions WD_Start WD_Finish
-				Transition WD_Start = myFactory.createTransition();
-				Transition WD_Finish = myFactory.createTransition();
-				
-				WD_Start.setName(((WorkDefinition) o).getName() + "_Start");
-				WD_Finish.setName(((WorkDefinition) o).getName() + "_Finish");
-				
-				// on crée quatre arcs qui relais les places aves les transitions
-				Arc NotStarted2Start = myFactory.createArc();
-				Arc Start2Running = myFactory.createArc();
-				Arc Running2Finish = myFactory.createArc();
-				Arc Finish2Finished = myFactory.createArc();
-				
-				NotStarted2Start.setWeight(1);
-				Start2Running.setWeight(1);
-				Running2Finish.setWeight(1);
-				Finish2Finished.setWeight(1);
-				
-				NotStarted2Start.setType(TypeOfArc.NORMAL);
-				Start2Running.setType(TypeOfArc.NORMAL);
-				Running2Finish.setType(TypeOfArc.NORMAL);
-				Finish2Finished.setType(TypeOfArc.NORMAL);
-				
-				NotStarted2Start.setFrom(WD_NotStarted);
-				NotStarted2Start.setTo(WD_Start);
-				
-				Start2Running.setFrom(WD_Start);
-				Start2Running.setTo(WD_Running);
-				
-				Running2Finish.setFrom(WD_Running);
-				Running2Finish.setTo(WD_Finish);
-				
-				Finish2Finished.setFrom(WD_Finish);
-				Finish2Finished.setTo(WD_Finished);
-					
-				
-				
-				
-			} else if (o instanceof WorkSequence) {
-				
-				Arc arc_name = myFactory.createArc();
-				arc_name.setType(TypeOfArc.READ_ARC);
-				arc_name.setWeight(1);
-				
-				if (((WorkSequence) o).getLinkType() == WorkSequenceType.FINISH_TO_START) {
-					
-					
-				} else if (((WorkSequence) o).getLinkType() == WorkSequenceType.FINISH_TO_START) {
-					
-					
-				} else if (((WorkSequence) o).getLinkType() == WorkSequenceType.START_TO_FINISH) {
-					
-					
-				} else {
-					
-					
-				}
-				
-				
-				
-				
-			} else if (o instanceof Ressource) {
-				
-			} else if (o instanceof Ressource_Usage) {
-				
+				Transition wd_start = myFactory.createTransition();
+				Transition wd_finish = myFactory.createTransition();
+
+				wd_start.setName(((WorkDefinition) o).getName() + "_start");
+				wd_finish.setName(((WorkDefinition) o).getName() + "_finish");
+
+				transitions.put(wd_start.getName(), wd_start);
+				transitions.put(wd_finish.getName(), wd_finish);
+
+				petrinet.getElement().add(wd_start);
+				petrinet.getElement().add(wd_finish);
+
+				// on crée cinq arcs qui relais les places aves les transitions
+				Arc ready2start = myFactory.createArc();
+				Arc start2running = myFactory.createArc();
+				Arc start2started = myFactory.createArc();
+				Arc running2finish = myFactory.createArc();
+				Arc finish2finished = myFactory.createArc();
+
+				ready2start.setWeight(1);
+				start2started.setWeight(1);
+				start2running.setWeight(1);
+				running2finish.setWeight(1);
+				finish2finished.setWeight(1);
+
+				ready2start.setType(TypeOfArc.NORMAL);
+				start2started.setType(TypeOfArc.NORMAL);
+				start2running.setType(TypeOfArc.NORMAL);
+				running2finish.setType(TypeOfArc.NORMAL);
+				finish2finished.setType(TypeOfArc.NORMAL);
+
+				ready2start.setFrom(wd_ready);
+				ready2start.setTo(wd_start);
+
+				start2started.setFrom(wd_start);
+				start2started.setTo(wd_started);
+
+				start2running.setFrom(wd_start);
+				start2running.setTo(wd_running);
+
+				running2finish.setFrom(wd_running);
+				running2finish.setTo(wd_finish);
+
+				finish2finished.setFrom(wd_finish);
+				finish2finished.setTo(wd_finished);
+
+				petrinet.getElement().add(ready2start);
+				petrinet.getElement().add(start2started);
+				petrinet.getElement().add(start2running);
+				petrinet.getElement().add(running2finish);
+				petrinet.getElement().add(finish2finished);
+
 			}
 		}
 		
+		System.out.println("WD__OK");
 		
+		// convertir les  WorkSequences
+		for (Object o : process.getProcessElements()) {
+			if(o instanceof WorkSequence) {
+				Arc ws_con = myFactory.createArc();
+				ws_con.setType(TypeOfArc.READ_ARC);
+				
+				if (((WorkSequence) o).getLinkType() == WorkSequenceType.START_TO_START) {
+					ws_con.setFrom(places.get(((WorkSequence) o).getPredecessor().getName() + "_started"));
+					ws_con.setTo(transitions.get(((WorkSequence) o).getSuccessor().getName() + "_start"));
+				} else if (((WorkSequence) o).getLinkType() == WorkSequenceType.START_TO_FINISH) {
+					ws_con.setFrom(places.get(((WorkSequence) o).getPredecessor().getName() + "_started"));
+					ws_con.setTo(transitions.get(((WorkSequence) o).getSuccessor().getName() + "_finish"));
+				} else if (((WorkSequence) o).getLinkType() == WorkSequenceType.FINISH_TO_START) {
+					ws_con.setFrom(places.get(((WorkSequence) o).getPredecessor().getName() + "_finished"));
+					ws_con.setTo(transitions.get(((WorkSequence) o).getSuccessor().getName() + "_start"));
+				} else if (((WorkSequence) o).getLinkType() == WorkSequenceType.FINISH_TO_FINISH) {
+					ws_con.setFrom(places.get(((WorkSequence) o).getPredecessor().getName() + "_finished"));
+					ws_con.setTo(transitions.get(((WorkSequence) o).getSuccessor().getName() + "_finish"));
+				}
+				
+				petrinet.getElement().add(ws_con);
+			}
+		}
 		
+		System.out.println("WS__OK");
 		
-		
-		
-		
+		// Sauver la ressource
+		try {
+			resource2.save(Collections.EMPTY_MAP);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
 	}
+
 }
