@@ -8,7 +8,7 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/LIL/gls-v2019/eclipse-gls/plugins/org.eclipse.emf.common_2.20.0.v20200822-0801.jar" sourcepath="C:/Users/LIL/gls-v2019/eclipse-gls/plugins/org.eclipse.emf.common.source_2.20.0.v20200822-0801.jar">
+	<classpathentry kind="lib" path="C:/Users/MDAA/gls-v2019/eclipse-gls/plugins/org.eclipse.emf.common_2.20.0.v20200822-0801.jar" sourcepath="C:/Users/LIL/gls-v2019/eclipse-gls/plugins/org.eclipse.emf.common.source_2.20.0.v20200822-0801.jar">
 		<accessrules>
 			<accessrule kind="accessible" pattern="org/eclipse/emf/common/*"/>
 			<accessrule kind="accessible" pattern="org/eclipse/emf/common/archive/*"/>
@@ -19,7 +19,7 @@
 			<accessrule ignoreifbetter="true" kind="nonaccessible" pattern="**/*"/>
 		</accessrules>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/LIL/gls-v2019/eclipse-gls/plugins/org.eclipse.emf.ecore_2.23.0.v20200630-0516.jar" sourcepath="C:/Users/LIL/gls-v2019/eclipse-gls/plugins/org.eclipse.emf.ecore.source_2.23.0.v20200630-0516.jar">
+	<classpathentry kind="lib" path="C:/Users/MDAA/gls-v2019/eclipse-gls/plugins/org.eclipse.emf.ecore_2.23.0.v20200630-0516.jar" sourcepath="C:/Users/LIL/gls-v2019/eclipse-gls/plugins/org.eclipse.emf.ecore.source_2.23.0.v20200630-0516.jar">
 		<accessrules>
 			<accessrule kind="accessible" pattern="org/eclipse/emf/ecore/*"/>
 			<accessrule kind="accessible" pattern="org/eclipse/emf/ecore/impl/*"/>
@@ -38,6 +38,6 @@
 		</accessrules>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
-	<classpathentry kind="lib" path="C:/Users/LIL/gls-v2019/eclipse-gls/plugins/org.eclipse.emf.ecore.xmi_2.16.0.v20190528-0725.jar"/>
+	<classpathentry kind="lib" path="C:/Users/MDAA/gls-v2019/eclipse-gls/plugins/org.eclipse.emf.ecore.xmi_2.16.0.v20190528-0725.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
