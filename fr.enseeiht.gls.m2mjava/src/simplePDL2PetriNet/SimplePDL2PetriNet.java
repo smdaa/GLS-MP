@@ -18,7 +18,7 @@ import petrinet.*;
 public class SimplePDL2PetriNet {
 
 	public static void main(String[] args) {
-		
+
 		System.out.println("Working Directory = " + System.getProperty("user.dir"));
 
 		// Charger le package SimplePDL afin de l'enregistrer dans le registre
@@ -48,7 +48,7 @@ public class SimplePDL2PetriNet {
 		ResourceSet resSet2 = new ResourceSetImpl();
 
 		// Définir le modèle simplepdl
-		URI modelURIbis = URI.createURI("models/ConvertedProcess-exemple.xmi");
+		URI modelURIbis = URI.createURI("models/Converted.xmi");
 		Resource resource2 = resSet2.createResource(modelURIbis);
 
 		// Récupérer le premier élément du modéle (élément racine)
@@ -68,8 +68,8 @@ public class SimplePDL2PetriNet {
 		// hash map pour un recherche efficace
 		Map<String, Place> places = new HashMap<String, Place>();
 		Map<String, Transition> transitions = new HashMap<String, Transition>();
+		Map<String, Place> ressources = new HashMap<String, Place>();
 
-		
 		// convertir les workdefenitions
 		for (Object o : process.getProcessElements()) {
 			if (o instanceof WorkDefinition) {
@@ -79,6 +79,8 @@ public class SimplePDL2PetriNet {
 				Place wd_started = myFactory.createPlace();
 				Place wd_running = myFactory.createPlace();
 				Place wd_finished = myFactory.createPlace();
+
+				wd_ready.setToken(1);
 
 				wd_ready.setName(((WorkDefinition) o).getName() + "_ready");
 				wd_started.setName(((WorkDefinition) o).getName() + "_started");
@@ -148,15 +150,16 @@ public class SimplePDL2PetriNet {
 
 			}
 		}
-		
+
 		System.out.println("WD__OK");
-		
-		// convertir les  WorkSequences
+
+		// convertir les WorkSequences
 		for (Object o : process.getProcessElements()) {
-			if(o instanceof WorkSequence) {
+			if (o instanceof WorkSequence) {
 				Arc ws_con = myFactory.createArc();
 				ws_con.setType(TypeOfArc.READ_ARC);
-				
+				ws_con.setWeight(1);
+
 				if (((WorkSequence) o).getLinkType() == WorkSequenceType.START_TO_START) {
 					ws_con.setFrom(places.get(((WorkSequence) o).getPredecessor().getName() + "_started"));
 					ws_con.setTo(transitions.get(((WorkSequence) o).getSuccessor().getName() + "_start"));
@@ -170,14 +173,55 @@ public class SimplePDL2PetriNet {
 					ws_con.setFrom(places.get(((WorkSequence) o).getPredecessor().getName() + "_finished"));
 					ws_con.setTo(transitions.get(((WorkSequence) o).getSuccessor().getName() + "_finish"));
 				}
-				
+
 				petrinet.getElement().add(ws_con);
 			}
 		}
-		
+
 		System.out.println("WS__OK");
-		
-		// Sauver la ressource
+
+		// convertir les ressources
+		for (Object o : process.getProcessElements()) {
+			if (o instanceof Ressource) {
+				Place p_ressource = myFactory.createPlace();
+				p_ressource.setName(((Ressource) o).getName());
+				p_ressource.setToken(((Ressource) o).getQuantite());
+
+				ressources.put(p_ressource.getName(), p_ressource);
+				petrinet.getElement().add(p_ressource);
+			}
+		}
+
+		System.out.println("R__OK");
+
+		// convertir les ressource usage
+		for (Object o : process.getProcessElements()) {
+			if (o instanceof Ressource_Usage) {
+
+				Place p_ressource = ressources.get(((Ressource_Usage) o).getUsed_ressource().getName());
+				Transition t_start = transitions.get(((Ressource_Usage) o).getUser_WD().getName() + "_start");
+				Transition t_finish = transitions.get(((Ressource_Usage) o).getUser_WD().getName() + "_finish");
+
+				// allouer les ressources
+				Arc u1 = myFactory.createArc();
+				u1.setFrom(p_ressource);
+				u1.setTo(t_start);
+				u1.setWeight(((Ressource_Usage) o).getQuantite());
+
+				// d�sallouer les ressources
+				Arc u2 = myFactory.createArc();
+				u2.setFrom(t_finish);
+				u2.setTo(p_ressource);
+				u2.setWeight(((Ressource_Usage) o).getQuantite());
+
+				petrinet.getElement().add(u1);
+				petrinet.getElement().add(u2);
+			}
+		}
+
+		System.out.println("RU__OK");
+
+		// Sauver le modeleconverti
 		try {
 			resource2.save(Collections.EMPTY_MAP);
 		} catch (IOException e) {
