@@ -16,7 +16,7 @@ Définir une transformation SimplePDL vers PetriNet en utilisant ATL.
 
 Valider la transformation SimplePDL vers PetriNet en faisant des tests.
 
-Définir une transformation PetriNet vers Tina en utilisant Acceleo.
+Définir une transformation PetriNet vers Tina en utilisant Acceleo.					OK
 
 Engendrer les propriétés LTL permettant de vérifier la terminaison d’un processus et les
 appliquer sur différents modèles de processus.
