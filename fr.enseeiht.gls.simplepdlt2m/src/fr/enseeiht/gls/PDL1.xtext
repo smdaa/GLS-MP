@@ -1,0 +1,38 @@
+grammar fr.enseeiht.gls.PDL1 with org.eclipse.xtext.common.Terminals
+
+generate pDL1 "http://www.enseeiht.fr/gls/PDL1"
+
+Process:
+	'process' name=ID '{'
+	processElements+=ProcessElement*
+	'}';
+
+ProcessElement:
+	WorkDefinition | WorkSequence | Guidance | Ressource | Ressource_Usage;
+
+Ressource_Usage:
+	'qt' quantite=INT
+	'of' ressource=[Ressource]
+	'to' workdefinition=[WorkDefinition];
+
+Ressource:
+	'rs' name=STRING
+	'qt' quantite=INT;
+
+WorkDefinition:
+	'wd' name=ID
+	'needs' ressource=[Ressource];
+
+WorkSequence:
+	'ws' linkType=WorkSequenceType
+	'from' predecessor=[WorkDefinition]
+	'to' successor=[WorkDefinition];
+
+Guidance:
+	'note' texte=STRING;
+
+enum WorkSequenceType:
+	start2start='s2s'
+	| finish2start='f2s'
+	| start2finish='s2f'
+	| finish2finish='f2f';

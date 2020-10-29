@@ -1,0 +1,30 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: fr.enseeiht.gls.simplepdlt2m
+Bundle-ManifestVersion: 2
+Bundle-Name: fr.enseeiht.gls.simplepdlt2m
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: fr.enseeiht.gls.simplepdlt2m; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext,
+ org.eclipse.xtext.xbase,
+ org.eclipse.equinox.common;bundle-version="3.5.0",
+ org.eclipse.emf.ecore,
+ org.eclipse.xtext.xbase.lib;bundle-version="2.14.0",
+ org.eclipse.xtext.util,
+ org.eclipse.emf.common,
+ org.eclipse.xtend.lib;bundle-version="2.14.0",
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Export-Package: fr.enseeiht.gls.serializer,
+ fr.enseeiht.gls.parser.antlr,
+ fr.enseeiht.gls.validation,
+ fr.enseeiht.gls.pDL1.util,
+ fr.enseeiht.gls.generator,
+ fr.enseeiht.gls,
+ fr.enseeiht.gls.pDL1,
+ fr.enseeiht.gls.pDL1.impl,
+ fr.enseeiht.gls.scoping,
+ fr.enseeiht.gls.services,
+ fr.enseeiht.gls.parser.antlr.internal
+Import-Package: org.apache.log4j

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<?eclipse version="3.0"?>
+<plugin>
+	<extension point="org.eclipse.emf.ecore.generated_package">
+		<package 
+			uri = "http://www.enseeiht.fr/gls/PDL1"
+			class = "fr.enseeiht.gls.pDL1.PDL1Package"
+			genModel = "model/generated/PDL1.genmodel" />
+	</extension>
+</plugin>
