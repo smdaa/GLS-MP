@@ -92,14 +92,14 @@ public class PDL1AdapterFactory extends AdapterFactoryImpl
         return createProcessElementAdapter();
       }
       @Override
-      public Adapter caseRessource_Usage(Ressource_Usage object)
-      {
-        return createRessource_UsageAdapter();
-      }
-      @Override
       public Adapter caseRessource(Ressource object)
       {
         return createRessourceAdapter();
+      }
+      @Override
+      public Adapter caseRessource_Usage(Ressource_Usage object)
+      {
+        return createRessource_UsageAdapter();
       }
       @Override
       public Adapter caseWorkDefinition(WorkDefinition object)
@@ -169,21 +169,6 @@ public class PDL1AdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link fr.enseeiht.gls.pDL1.Ressource_Usage <em>Ressource Usage</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see fr.enseeiht.gls.pDL1.Ressource_Usage
-   * @generated
-   */
-  public Adapter createRessource_UsageAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link fr.enseeiht.gls.pDL1.Ressource <em>Ressource</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -194,6 +179,21 @@ public class PDL1AdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createRessourceAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link fr.enseeiht.gls.pDL1.Ressource_Usage <em>Ressource Usage</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see fr.enseeiht.gls.pDL1.Ressource_Usage
+   * @generated
+   */
+  public Adapter createRessource_UsageAdapter()
   {
     return null;
   }

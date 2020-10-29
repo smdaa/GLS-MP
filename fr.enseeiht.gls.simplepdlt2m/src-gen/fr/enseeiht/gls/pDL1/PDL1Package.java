@@ -115,52 +115,6 @@ public interface PDL1Package extends EPackage
   int PROCESS_ELEMENT_FEATURE_COUNT = 0;
 
   /**
-   * The meta object id for the '{@link fr.enseeiht.gls.pDL1.impl.Ressource_UsageImpl <em>Ressource Usage</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see fr.enseeiht.gls.pDL1.impl.Ressource_UsageImpl
-   * @see fr.enseeiht.gls.pDL1.impl.PDL1PackageImpl#getRessource_Usage()
-   * @generated
-   */
-  int RESSOURCE_USAGE = 2;
-
-  /**
-   * The feature id for the '<em><b>Quantite</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int RESSOURCE_USAGE__QUANTITE = PROCESS_ELEMENT_FEATURE_COUNT + 0;
-
-  /**
-   * The feature id for the '<em><b>Ressource</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int RESSOURCE_USAGE__RESSOURCE = PROCESS_ELEMENT_FEATURE_COUNT + 1;
-
-  /**
-   * The feature id for the '<em><b>Workdefinition</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int RESSOURCE_USAGE__WORKDEFINITION = PROCESS_ELEMENT_FEATURE_COUNT + 2;
-
-  /**
-   * The number of structural features of the '<em>Ressource Usage</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int RESSOURCE_USAGE_FEATURE_COUNT = PROCESS_ELEMENT_FEATURE_COUNT + 3;
-
-  /**
    * The meta object id for the '{@link fr.enseeiht.gls.pDL1.impl.RessourceImpl <em>Ressource</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -168,7 +122,7 @@ public interface PDL1Package extends EPackage
    * @see fr.enseeiht.gls.pDL1.impl.PDL1PackageImpl#getRessource()
    * @generated
    */
-  int RESSOURCE = 3;
+  int RESSOURCE = 2;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -198,6 +152,43 @@ public interface PDL1Package extends EPackage
   int RESSOURCE_FEATURE_COUNT = PROCESS_ELEMENT_FEATURE_COUNT + 2;
 
   /**
+   * The meta object id for the '{@link fr.enseeiht.gls.pDL1.impl.Ressource_UsageImpl <em>Ressource Usage</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see fr.enseeiht.gls.pDL1.impl.Ressource_UsageImpl
+   * @see fr.enseeiht.gls.pDL1.impl.PDL1PackageImpl#getRessource_Usage()
+   * @generated
+   */
+  int RESSOURCE_USAGE = 3;
+
+  /**
+   * The feature id for the '<em><b>Quantite</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RESSOURCE_USAGE__QUANTITE = PROCESS_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Ressource</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RESSOURCE_USAGE__RESSOURCE = PROCESS_ELEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Ressource Usage</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RESSOURCE_USAGE_FEATURE_COUNT = PROCESS_ELEMENT_FEATURE_COUNT + 2;
+
+  /**
    * The meta object id for the '{@link fr.enseeiht.gls.pDL1.impl.WorkDefinitionImpl <em>Work Definition</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -217,13 +208,13 @@ public interface PDL1Package extends EPackage
   int WORK_DEFINITION__NAME = PROCESS_ELEMENT_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Ressource</b></em>' reference.
+   * The feature id for the '<em><b>Ressource Usage</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int WORK_DEFINITION__RESSOURCE = PROCESS_ELEMENT_FEATURE_COUNT + 1;
+  int WORK_DEFINITION__RESSOURCE_USAGE = PROCESS_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Work Definition</em>' class.
@@ -362,49 +353,6 @@ public interface PDL1Package extends EPackage
   EClass getProcessElement();
 
   /**
-   * Returns the meta object for class '{@link fr.enseeiht.gls.pDL1.Ressource_Usage <em>Ressource Usage</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Ressource Usage</em>'.
-   * @see fr.enseeiht.gls.pDL1.Ressource_Usage
-   * @generated
-   */
-  EClass getRessource_Usage();
-
-  /**
-   * Returns the meta object for the attribute '{@link fr.enseeiht.gls.pDL1.Ressource_Usage#getQuantite <em>Quantite</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Quantite</em>'.
-   * @see fr.enseeiht.gls.pDL1.Ressource_Usage#getQuantite()
-   * @see #getRessource_Usage()
-   * @generated
-   */
-  EAttribute getRessource_Usage_Quantite();
-
-  /**
-   * Returns the meta object for the reference '{@link fr.enseeiht.gls.pDL1.Ressource_Usage#getRessource <em>Ressource</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Ressource</em>'.
-   * @see fr.enseeiht.gls.pDL1.Ressource_Usage#getRessource()
-   * @see #getRessource_Usage()
-   * @generated
-   */
-  EReference getRessource_Usage_Ressource();
-
-  /**
-   * Returns the meta object for the reference '{@link fr.enseeiht.gls.pDL1.Ressource_Usage#getWorkdefinition <em>Workdefinition</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Workdefinition</em>'.
-   * @see fr.enseeiht.gls.pDL1.Ressource_Usage#getWorkdefinition()
-   * @see #getRessource_Usage()
-   * @generated
-   */
-  EReference getRessource_Usage_Workdefinition();
-
-  /**
    * Returns the meta object for class '{@link fr.enseeiht.gls.pDL1.Ressource <em>Ressource</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -437,6 +385,38 @@ public interface PDL1Package extends EPackage
   EAttribute getRessource_Quantite();
 
   /**
+   * Returns the meta object for class '{@link fr.enseeiht.gls.pDL1.Ressource_Usage <em>Ressource Usage</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Ressource Usage</em>'.
+   * @see fr.enseeiht.gls.pDL1.Ressource_Usage
+   * @generated
+   */
+  EClass getRessource_Usage();
+
+  /**
+   * Returns the meta object for the attribute '{@link fr.enseeiht.gls.pDL1.Ressource_Usage#getQuantite <em>Quantite</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Quantite</em>'.
+   * @see fr.enseeiht.gls.pDL1.Ressource_Usage#getQuantite()
+   * @see #getRessource_Usage()
+   * @generated
+   */
+  EAttribute getRessource_Usage_Quantite();
+
+  /**
+   * Returns the meta object for the reference '{@link fr.enseeiht.gls.pDL1.Ressource_Usage#getRessource <em>Ressource</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Ressource</em>'.
+   * @see fr.enseeiht.gls.pDL1.Ressource_Usage#getRessource()
+   * @see #getRessource_Usage()
+   * @generated
+   */
+  EReference getRessource_Usage_Ressource();
+
+  /**
    * Returns the meta object for class '{@link fr.enseeiht.gls.pDL1.WorkDefinition <em>Work Definition</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -458,15 +438,15 @@ public interface PDL1Package extends EPackage
   EAttribute getWorkDefinition_Name();
 
   /**
-   * Returns the meta object for the reference '{@link fr.enseeiht.gls.pDL1.WorkDefinition#getRessource <em>Ressource</em>}'.
+   * Returns the meta object for the containment reference list '{@link fr.enseeiht.gls.pDL1.WorkDefinition#getRessource_Usage <em>Ressource Usage</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Ressource</em>'.
-   * @see fr.enseeiht.gls.pDL1.WorkDefinition#getRessource()
+   * @return the meta object for the containment reference list '<em>Ressource Usage</em>'.
+   * @see fr.enseeiht.gls.pDL1.WorkDefinition#getRessource_Usage()
    * @see #getWorkDefinition()
    * @generated
    */
-  EReference getWorkDefinition_Ressource();
+  EReference getWorkDefinition_Ressource_Usage();
 
   /**
    * Returns the meta object for class '{@link fr.enseeiht.gls.pDL1.WorkSequence <em>Work Sequence</em>}'.
@@ -602,40 +582,6 @@ public interface PDL1Package extends EPackage
     EClass PROCESS_ELEMENT = eINSTANCE.getProcessElement();
 
     /**
-     * The meta object literal for the '{@link fr.enseeiht.gls.pDL1.impl.Ressource_UsageImpl <em>Ressource Usage</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see fr.enseeiht.gls.pDL1.impl.Ressource_UsageImpl
-     * @see fr.enseeiht.gls.pDL1.impl.PDL1PackageImpl#getRessource_Usage()
-     * @generated
-     */
-    EClass RESSOURCE_USAGE = eINSTANCE.getRessource_Usage();
-
-    /**
-     * The meta object literal for the '<em><b>Quantite</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute RESSOURCE_USAGE__QUANTITE = eINSTANCE.getRessource_Usage_Quantite();
-
-    /**
-     * The meta object literal for the '<em><b>Ressource</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference RESSOURCE_USAGE__RESSOURCE = eINSTANCE.getRessource_Usage_Ressource();
-
-    /**
-     * The meta object literal for the '<em><b>Workdefinition</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference RESSOURCE_USAGE__WORKDEFINITION = eINSTANCE.getRessource_Usage_Workdefinition();
-
-    /**
      * The meta object literal for the '{@link fr.enseeiht.gls.pDL1.impl.RessourceImpl <em>Ressource</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -662,6 +608,32 @@ public interface PDL1Package extends EPackage
     EAttribute RESSOURCE__QUANTITE = eINSTANCE.getRessource_Quantite();
 
     /**
+     * The meta object literal for the '{@link fr.enseeiht.gls.pDL1.impl.Ressource_UsageImpl <em>Ressource Usage</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see fr.enseeiht.gls.pDL1.impl.Ressource_UsageImpl
+     * @see fr.enseeiht.gls.pDL1.impl.PDL1PackageImpl#getRessource_Usage()
+     * @generated
+     */
+    EClass RESSOURCE_USAGE = eINSTANCE.getRessource_Usage();
+
+    /**
+     * The meta object literal for the '<em><b>Quantite</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute RESSOURCE_USAGE__QUANTITE = eINSTANCE.getRessource_Usage_Quantite();
+
+    /**
+     * The meta object literal for the '<em><b>Ressource</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference RESSOURCE_USAGE__RESSOURCE = eINSTANCE.getRessource_Usage_Ressource();
+
+    /**
      * The meta object literal for the '{@link fr.enseeiht.gls.pDL1.impl.WorkDefinitionImpl <em>Work Definition</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -680,12 +652,12 @@ public interface PDL1Package extends EPackage
     EAttribute WORK_DEFINITION__NAME = eINSTANCE.getWorkDefinition_Name();
 
     /**
-     * The meta object literal for the '<em><b>Ressource</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Ressource Usage</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference WORK_DEFINITION__RESSOURCE = eINSTANCE.getWorkDefinition_Ressource();
+    EReference WORK_DEFINITION__RESSOURCE_USAGE = eINSTANCE.getWorkDefinition_Ressource_Usage();
 
     /**
      * The meta object literal for the '{@link fr.enseeiht.gls.pDL1.impl.WorkSequenceImpl <em>Work Sequence</em>}' class.

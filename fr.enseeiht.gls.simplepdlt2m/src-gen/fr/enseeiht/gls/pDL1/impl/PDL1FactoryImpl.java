@@ -76,8 +76,8 @@ public class PDL1FactoryImpl extends EFactoryImpl implements PDL1Factory
     {
       case PDL1Package.PROCESS: return createProcess();
       case PDL1Package.PROCESS_ELEMENT: return createProcessElement();
-      case PDL1Package.RESSOURCE_USAGE: return createRessource_Usage();
       case PDL1Package.RESSOURCE: return createRessource();
+      case PDL1Package.RESSOURCE_USAGE: return createRessource_Usage();
       case PDL1Package.WORK_DEFINITION: return createWorkDefinition();
       case PDL1Package.WORK_SEQUENCE: return createWorkSequence();
       case PDL1Package.GUIDANCE: return createGuidance();
@@ -150,10 +150,10 @@ public class PDL1FactoryImpl extends EFactoryImpl implements PDL1Factory
    * @generated
    */
   @Override
-  public Ressource_Usage createRessource_Usage()
+  public Ressource createRessource()
   {
-    Ressource_UsageImpl ressource_Usage = new Ressource_UsageImpl();
-    return ressource_Usage;
+    RessourceImpl ressource = new RessourceImpl();
+    return ressource;
   }
 
   /**
@@ -162,10 +162,10 @@ public class PDL1FactoryImpl extends EFactoryImpl implements PDL1Factory
    * @generated
    */
   @Override
-  public Ressource createRessource()
+  public Ressource_Usage createRessource_Usage()
   {
-    RessourceImpl ressource = new RessourceImpl();
-    return ressource;
+    Ressource_UsageImpl ressource_Usage = new Ressource_UsageImpl();
+    return ressource_Usage;
   }
 
   /**

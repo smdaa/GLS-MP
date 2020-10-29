@@ -1,0 +1,18 @@
+process dev {
+	rs concepteur qt 3
+	rs developpeur qt 2
+	rs machine qt 4
+	rs redacteur qt 2
+	rs testeur qt 2
+	
+	wd Conception needs to get 2 of concepteur get 1 of machine
+	wd RedactionDoc needs to get 1 of machine get 1 of redacteur
+	wd Programmation needs to get 2 of developpeur get 3 of machine
+	wd RedactionTests needs to get 2 of machine get 1 of testeur
+	
+	ws f2f from Conception to RedactionDoc
+	ws s2s from Conception to RedactionDoc
+	ws f2f from Conception to Programmation
+	ws s2s from Conception to RedactionTests
+	ws f2f from Programmation to RedactionTests
+}

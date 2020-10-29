@@ -98,32 +98,63 @@ public class PDL1GrammarAccess extends AbstractGrammarElementFinder {
 		//Ressource_Usage
 		public RuleCall getRessource_UsageParserRuleCall_4() { return cRessource_UsageParserRuleCall_4; }
 	}
+	public class RessourceElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fr.enseeiht.gls.PDL1.Ressource");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cRsKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Keyword cQtKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cQuantiteAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cQuantiteINTTerminalRuleCall_3_0 = (RuleCall)cQuantiteAssignment_3.eContents().get(0);
+		
+		//Ressource:
+		//	'rs' name=ID
+		//	'qt' quantite=INT;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'rs' name=ID 'qt' quantite=INT
+		public Group getGroup() { return cGroup; }
+		
+		//'rs'
+		public Keyword getRsKeyword_0() { return cRsKeyword_0; }
+		
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+		
+		//'qt'
+		public Keyword getQtKeyword_2() { return cQtKeyword_2; }
+		
+		//quantite=INT
+		public Assignment getQuantiteAssignment_3() { return cQuantiteAssignment_3; }
+		
+		//INT
+		public RuleCall getQuantiteINTTerminalRuleCall_3_0() { return cQuantiteINTTerminalRuleCall_3_0; }
+	}
 	public class Ressource_UsageElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fr.enseeiht.gls.PDL1.Ressource_Usage");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cQtKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cGetKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cQuantiteAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cQuantiteINTTerminalRuleCall_1_0 = (RuleCall)cQuantiteAssignment_1.eContents().get(0);
 		private final Keyword cOfKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cRessourceAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final CrossReference cRessourceRessourceCrossReference_3_0 = (CrossReference)cRessourceAssignment_3.eContents().get(0);
 		private final RuleCall cRessourceRessourceIDTerminalRuleCall_3_0_1 = (RuleCall)cRessourceRessourceCrossReference_3_0.eContents().get(1);
-		private final Keyword cToKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Assignment cWorkdefinitionAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final CrossReference cWorkdefinitionWorkDefinitionCrossReference_5_0 = (CrossReference)cWorkdefinitionAssignment_5.eContents().get(0);
-		private final RuleCall cWorkdefinitionWorkDefinitionIDTerminalRuleCall_5_0_1 = (RuleCall)cWorkdefinitionWorkDefinitionCrossReference_5_0.eContents().get(1);
 		
 		//Ressource_Usage:
-		//	'qt' quantite=INT
-		//	'of' ressource=[Ressource]
-		//	'to' workdefinition=[WorkDefinition];
+		//	'get' quantite=INT
+		//	'of' ressource=[Ressource];
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'qt' quantite=INT 'of' ressource=[Ressource] 'to' workdefinition=[WorkDefinition]
+		//'get' quantite=INT 'of' ressource=[Ressource]
 		public Group getGroup() { return cGroup; }
 		
-		//'qt'
-		public Keyword getQtKeyword_0() { return cQtKeyword_0; }
+		//'get'
+		public Keyword getGetKeyword_0() { return cGetKeyword_0; }
 		
 		//quantite=INT
 		public Assignment getQuantiteAssignment_1() { return cQuantiteAssignment_1; }
@@ -142,54 +173,6 @@ public class PDL1GrammarAccess extends AbstractGrammarElementFinder {
 		
 		//ID
 		public RuleCall getRessourceRessourceIDTerminalRuleCall_3_0_1() { return cRessourceRessourceIDTerminalRuleCall_3_0_1; }
-		
-		//'to'
-		public Keyword getToKeyword_4() { return cToKeyword_4; }
-		
-		//workdefinition=[WorkDefinition]
-		public Assignment getWorkdefinitionAssignment_5() { return cWorkdefinitionAssignment_5; }
-		
-		//[WorkDefinition]
-		public CrossReference getWorkdefinitionWorkDefinitionCrossReference_5_0() { return cWorkdefinitionWorkDefinitionCrossReference_5_0; }
-		
-		//ID
-		public RuleCall getWorkdefinitionWorkDefinitionIDTerminalRuleCall_5_0_1() { return cWorkdefinitionWorkDefinitionIDTerminalRuleCall_5_0_1; }
-	}
-	public class RessourceElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fr.enseeiht.gls.PDL1.Ressource");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cRsKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameSTRINGTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Keyword cQtKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cQuantiteAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cQuantiteINTTerminalRuleCall_3_0 = (RuleCall)cQuantiteAssignment_3.eContents().get(0);
-		
-		//Ressource:
-		//	'rs' name=STRING
-		//	'qt' quantite=INT;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//'rs' name=STRING 'qt' quantite=INT
-		public Group getGroup() { return cGroup; }
-		
-		//'rs'
-		public Keyword getRsKeyword_0() { return cRsKeyword_0; }
-		
-		//name=STRING
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
-		
-		//STRING
-		public RuleCall getNameSTRINGTerminalRuleCall_1_0() { return cNameSTRINGTerminalRuleCall_1_0; }
-		
-		//'qt'
-		public Keyword getQtKeyword_2() { return cQtKeyword_2; }
-		
-		//quantite=INT
-		public Assignment getQuantiteAssignment_3() { return cQuantiteAssignment_3; }
-		
-		//INT
-		public RuleCall getQuantiteINTTerminalRuleCall_3_0() { return cQuantiteINTTerminalRuleCall_3_0; }
 	}
 	public class WorkDefinitionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fr.enseeiht.gls.PDL1.WorkDefinition");
@@ -198,16 +181,16 @@ public class PDL1GrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Keyword cNeedsKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cRessourceAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final CrossReference cRessourceRessourceCrossReference_3_0 = (CrossReference)cRessourceAssignment_3.eContents().get(0);
-		private final RuleCall cRessourceRessourceIDTerminalRuleCall_3_0_1 = (RuleCall)cRessourceRessourceCrossReference_3_0.eContents().get(1);
+		private final Keyword cToKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cRessource_UsageAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cRessource_UsageRessource_UsageParserRuleCall_4_0 = (RuleCall)cRessource_UsageAssignment_4.eContents().get(0);
 		
 		//WorkDefinition:
 		//	'wd' name=ID
-		//	'needs' ressource=[Ressource];
+		//	'needs' 'to' Ressource_Usage+=Ressource_Usage*;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'wd' name=ID 'needs' ressource=[Ressource]
+		//'wd' name=ID 'needs' 'to' Ressource_Usage+=Ressource_Usage*
 		public Group getGroup() { return cGroup; }
 		
 		//'wd'
@@ -222,14 +205,14 @@ public class PDL1GrammarAccess extends AbstractGrammarElementFinder {
 		//'needs'
 		public Keyword getNeedsKeyword_2() { return cNeedsKeyword_2; }
 		
-		//ressource=[Ressource]
-		public Assignment getRessourceAssignment_3() { return cRessourceAssignment_3; }
+		//'to'
+		public Keyword getToKeyword_3() { return cToKeyword_3; }
 		
-		//[Ressource]
-		public CrossReference getRessourceRessourceCrossReference_3_0() { return cRessourceRessourceCrossReference_3_0; }
+		//Ressource_Usage+=Ressource_Usage*
+		public Assignment getRessource_UsageAssignment_4() { return cRessource_UsageAssignment_4; }
 		
-		//ID
-		public RuleCall getRessourceRessourceIDTerminalRuleCall_3_0_1() { return cRessourceRessourceIDTerminalRuleCall_3_0_1; }
+		//Ressource_Usage
+		public RuleCall getRessource_UsageRessource_UsageParserRuleCall_4_0() { return cRessource_UsageRessource_UsageParserRuleCall_4_0; }
 	}
 	public class WorkSequenceElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fr.enseeiht.gls.PDL1.WorkSequence");
@@ -361,8 +344,8 @@ public class PDL1GrammarAccess extends AbstractGrammarElementFinder {
 	
 	private final ProcessElements pProcess;
 	private final ProcessElementElements pProcessElement;
-	private final Ressource_UsageElements pRessource_Usage;
 	private final RessourceElements pRessource;
+	private final Ressource_UsageElements pRessource_Usage;
 	private final WorkDefinitionElements pWorkDefinition;
 	private final WorkSequenceElements pWorkSequence;
 	private final GuidanceElements pGuidance;
@@ -379,8 +362,8 @@ public class PDL1GrammarAccess extends AbstractGrammarElementFinder {
 		this.gaTerminals = gaTerminals;
 		this.pProcess = new ProcessElements();
 		this.pProcessElement = new ProcessElementElements();
-		this.pRessource_Usage = new Ressource_UsageElements();
 		this.pRessource = new RessourceElements();
+		this.pRessource_Usage = new Ressource_UsageElements();
 		this.pWorkDefinition = new WorkDefinitionElements();
 		this.pWorkSequence = new WorkSequenceElements();
 		this.pGuidance = new GuidanceElements();
@@ -436,20 +419,8 @@ public class PDL1GrammarAccess extends AbstractGrammarElementFinder {
 		return getProcessElementAccess().getRule();
 	}
 	
-	//Ressource_Usage:
-	//	'qt' quantite=INT
-	//	'of' ressource=[Ressource]
-	//	'to' workdefinition=[WorkDefinition];
-	public Ressource_UsageElements getRessource_UsageAccess() {
-		return pRessource_Usage;
-	}
-	
-	public ParserRule getRessource_UsageRule() {
-		return getRessource_UsageAccess().getRule();
-	}
-	
 	//Ressource:
-	//	'rs' name=STRING
+	//	'rs' name=ID
 	//	'qt' quantite=INT;
 	public RessourceElements getRessourceAccess() {
 		return pRessource;
@@ -459,9 +430,20 @@ public class PDL1GrammarAccess extends AbstractGrammarElementFinder {
 		return getRessourceAccess().getRule();
 	}
 	
+	//Ressource_Usage:
+	//	'get' quantite=INT
+	//	'of' ressource=[Ressource];
+	public Ressource_UsageElements getRessource_UsageAccess() {
+		return pRessource_Usage;
+	}
+	
+	public ParserRule getRessource_UsageRule() {
+		return getRessource_UsageAccess().getRule();
+	}
+	
 	//WorkDefinition:
 	//	'wd' name=ID
-	//	'needs' ressource=[Ressource];
+	//	'needs' 'to' Ressource_Usage+=Ressource_Usage*;
 	public WorkDefinitionElements getWorkDefinitionAccess() {
 		return pWorkDefinition;
 	}

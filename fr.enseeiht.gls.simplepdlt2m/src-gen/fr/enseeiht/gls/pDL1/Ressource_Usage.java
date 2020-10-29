@@ -15,7 +15,6 @@ package fr.enseeiht.gls.pDL1;
  * <ul>
  *   <li>{@link fr.enseeiht.gls.pDL1.Ressource_Usage#getQuantite <em>Quantite</em>}</li>
  *   <li>{@link fr.enseeiht.gls.pDL1.Ressource_Usage#getRessource <em>Ressource</em>}</li>
- *   <li>{@link fr.enseeiht.gls.pDL1.Ressource_Usage#getWorkdefinition <em>Workdefinition</em>}</li>
  * </ul>
  *
  * @see fr.enseeiht.gls.pDL1.PDL1Package#getRessource_Usage()
@@ -67,27 +66,5 @@ public interface Ressource_Usage extends ProcessElement
    * @generated
    */
   void setRessource(Ressource value);
-
-  /**
-   * Returns the value of the '<em><b>Workdefinition</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Workdefinition</em>' reference.
-   * @see #setWorkdefinition(WorkDefinition)
-   * @see fr.enseeiht.gls.pDL1.PDL1Package#getRessource_Usage_Workdefinition()
-   * @model
-   * @generated
-   */
-  WorkDefinition getWorkdefinition();
-
-  /**
-   * Sets the value of the '{@link fr.enseeiht.gls.pDL1.Ressource_Usage#getWorkdefinition <em>Workdefinition</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Workdefinition</em>' reference.
-   * @see #getWorkdefinition()
-   * @generated
-   */
-  void setWorkdefinition(WorkDefinition value);
 
 } // Ressource_Usage

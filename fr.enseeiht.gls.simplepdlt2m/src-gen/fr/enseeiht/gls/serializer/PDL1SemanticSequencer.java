@@ -96,7 +96,7 @@ public class PDL1SemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     Ressource returns Ressource
 	 *
 	 * Constraint:
-	 *     (name=STRING quantite=INT)
+	 *     (name=ID quantite=INT)
 	 */
 	protected void sequence_Ressource(ISerializationContext context, Ressource semanticObject) {
 		if (errorAcceptor != null) {
@@ -106,7 +106,7 @@ public class PDL1SemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PDL1Package.Literals.RESSOURCE__QUANTITE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getRessourceAccess().getNameSTRINGTerminalRuleCall_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getRessourceAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
 		feeder.accept(grammarAccess.getRessourceAccess().getQuantiteINTTerminalRuleCall_3_0(), semanticObject.getQuantite());
 		feeder.finish();
 	}
@@ -118,7 +118,7 @@ public class PDL1SemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     Ressource_Usage returns Ressource_Usage
 	 *
 	 * Constraint:
-	 *     (quantite=INT ressource=[Ressource|ID] workdefinition=[WorkDefinition|ID])
+	 *     (quantite=INT ressource=[Ressource|ID])
 	 */
 	protected void sequence_Ressource_Usage(ISerializationContext context, Ressource_Usage semanticObject) {
 		if (errorAcceptor != null) {
@@ -126,13 +126,10 @@ public class PDL1SemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PDL1Package.Literals.RESSOURCE_USAGE__QUANTITE));
 			if (transientValues.isValueTransient(semanticObject, PDL1Package.Literals.RESSOURCE_USAGE__RESSOURCE) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PDL1Package.Literals.RESSOURCE_USAGE__RESSOURCE));
-			if (transientValues.isValueTransient(semanticObject, PDL1Package.Literals.RESSOURCE_USAGE__WORKDEFINITION) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PDL1Package.Literals.RESSOURCE_USAGE__WORKDEFINITION));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getRessource_UsageAccess().getQuantiteINTTerminalRuleCall_1_0(), semanticObject.getQuantite());
 		feeder.accept(grammarAccess.getRessource_UsageAccess().getRessourceRessourceIDTerminalRuleCall_3_0_1(), semanticObject.eGet(PDL1Package.Literals.RESSOURCE_USAGE__RESSOURCE, false));
-		feeder.accept(grammarAccess.getRessource_UsageAccess().getWorkdefinitionWorkDefinitionIDTerminalRuleCall_5_0_1(), semanticObject.eGet(PDL1Package.Literals.RESSOURCE_USAGE__WORKDEFINITION, false));
 		feeder.finish();
 	}
 	
@@ -143,19 +140,10 @@ public class PDL1SemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     WorkDefinition returns WorkDefinition
 	 *
 	 * Constraint:
-	 *     (name=ID ressource=[Ressource|ID])
+	 *     (name=ID Ressource_Usage+=Ressource_Usage*)
 	 */
 	protected void sequence_WorkDefinition(ISerializationContext context, WorkDefinition semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, PDL1Package.Literals.WORK_DEFINITION__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PDL1Package.Literals.WORK_DEFINITION__NAME));
-			if (transientValues.isValueTransient(semanticObject, PDL1Package.Literals.WORK_DEFINITION__RESSOURCE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PDL1Package.Literals.WORK_DEFINITION__RESSOURCE));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getWorkDefinitionAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getWorkDefinitionAccess().getRessourceRessourceIDTerminalRuleCall_3_0_1(), semanticObject.eGet(PDL1Package.Literals.WORK_DEFINITION__RESSOURCE, false));
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

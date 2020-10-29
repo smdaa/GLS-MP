@@ -3,6 +3,7 @@
  */
 package fr.enseeiht.gls.pDL1;
 
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -14,7 +15,7 @@ package fr.enseeiht.gls.pDL1;
  * </p>
  * <ul>
  *   <li>{@link fr.enseeiht.gls.pDL1.WorkDefinition#getName <em>Name</em>}</li>
- *   <li>{@link fr.enseeiht.gls.pDL1.WorkDefinition#getRessource <em>Ressource</em>}</li>
+ *   <li>{@link fr.enseeiht.gls.pDL1.WorkDefinition#getRessource_Usage <em>Ressource Usage</em>}</li>
  * </ul>
  *
  * @see fr.enseeiht.gls.pDL1.PDL1Package#getWorkDefinition()
@@ -46,25 +47,15 @@ public interface WorkDefinition extends ProcessElement
   void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>Ressource</b></em>' reference.
+   * Returns the value of the '<em><b>Ressource Usage</b></em>' containment reference list.
+   * The list contents are of type {@link fr.enseeiht.gls.pDL1.Ressource_Usage}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Ressource</em>' reference.
-   * @see #setRessource(Ressource)
-   * @see fr.enseeiht.gls.pDL1.PDL1Package#getWorkDefinition_Ressource()
-   * @model
+   * @return the value of the '<em>Ressource Usage</em>' containment reference list.
+   * @see fr.enseeiht.gls.pDL1.PDL1Package#getWorkDefinition_Ressource_Usage()
+   * @model containment="true"
    * @generated
    */
-  Ressource getRessource();
-
-  /**
-   * Sets the value of the '{@link fr.enseeiht.gls.pDL1.WorkDefinition#getRessource <em>Ressource</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Ressource</em>' reference.
-   * @see #getRessource()
-   * @generated
-   */
-  void setRessource(Ressource value);
+  EList<Ressource_Usage> getRessource_Usage();
 
 } // WorkDefinition

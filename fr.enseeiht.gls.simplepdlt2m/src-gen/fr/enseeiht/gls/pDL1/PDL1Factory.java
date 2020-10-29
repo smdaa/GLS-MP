@@ -42,15 +42,6 @@ public interface PDL1Factory extends EFactory
   ProcessElement createProcessElement();
 
   /**
-   * Returns a new object of class '<em>Ressource Usage</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Ressource Usage</em>'.
-   * @generated
-   */
-  Ressource_Usage createRessource_Usage();
-
-  /**
    * Returns a new object of class '<em>Ressource</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -58,6 +49,15 @@ public interface PDL1Factory extends EFactory
    * @generated
    */
   Ressource createRessource();
+
+  /**
+   * Returns a new object of class '<em>Ressource Usage</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Ressource Usage</em>'.
+   * @generated
+   */
+  Ressource_Usage createRessource_Usage();
 
   /**
    * Returns a new object of class '<em>Work Definition</em>'.

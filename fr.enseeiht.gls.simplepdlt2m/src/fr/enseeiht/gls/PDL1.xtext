@@ -10,18 +10,17 @@ Process:
 ProcessElement:
 	WorkDefinition | WorkSequence | Guidance | Ressource | Ressource_Usage;
 
-Ressource_Usage:
-	'qt' quantite=INT
-	'of' ressource=[Ressource]
-	'to' workdefinition=[WorkDefinition];
-
 Ressource:
-	'rs' name=STRING
-	'qt' quantite=INT;
+	'rs' name=ID
+	'qt' quantite=INT;	
+
+Ressource_Usage:
+	'get' quantite=INT
+	'of' ressource=[Ressource];	
 
 WorkDefinition:
 	'wd' name=ID
-	'needs' ressource=[Ressource];
+	'needs' 'to' Ressource_Usage+=Ressource_Usage*;
 
 WorkSequence:
 	'ws' linkType=WorkSequenceType

@@ -4,15 +4,23 @@
 package fr.enseeiht.gls.pDL1.impl;
 
 import fr.enseeiht.gls.pDL1.PDL1Package;
-import fr.enseeiht.gls.pDL1.Ressource;
+import fr.enseeiht.gls.pDL1.Ressource_Usage;
 import fr.enseeiht.gls.pDL1.WorkDefinition;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,7 +31,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * </p>
  * <ul>
  *   <li>{@link fr.enseeiht.gls.pDL1.impl.WorkDefinitionImpl#getName <em>Name</em>}</li>
- *   <li>{@link fr.enseeiht.gls.pDL1.impl.WorkDefinitionImpl#getRessource <em>Ressource</em>}</li>
+ *   <li>{@link fr.enseeiht.gls.pDL1.impl.WorkDefinitionImpl#getRessource_Usage <em>Ressource Usage</em>}</li>
  * </ul>
  *
  * @generated
@@ -51,14 +59,14 @@ public class WorkDefinitionImpl extends ProcessElementImpl implements WorkDefini
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getRessource() <em>Ressource</em>}' reference.
+   * The cached value of the '{@link #getRessource_Usage() <em>Ressource Usage</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getRessource()
+   * @see #getRessource_Usage()
    * @generated
    * @ordered
    */
-  protected Ressource ressource;
+  protected EList<Ressource_Usage> ressource_Usage;
 
   /**
    * <!-- begin-user-doc -->
@@ -112,29 +120,13 @@ public class WorkDefinitionImpl extends ProcessElementImpl implements WorkDefini
    * @generated
    */
   @Override
-  public Ressource getRessource()
+  public EList<Ressource_Usage> getRessource_Usage()
   {
-    if (ressource != null && ressource.eIsProxy())
+    if (ressource_Usage == null)
     {
-      InternalEObject oldRessource = (InternalEObject)ressource;
-      ressource = (Ressource)eResolveProxy(oldRessource);
-      if (ressource != oldRessource)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, PDL1Package.WORK_DEFINITION__RESSOURCE, oldRessource, ressource));
-      }
+      ressource_Usage = new EObjectContainmentEList<Ressource_Usage>(Ressource_Usage.class, this, PDL1Package.WORK_DEFINITION__RESSOURCE_USAGE);
     }
-    return ressource;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Ressource basicGetRessource()
-  {
-    return ressource;
+    return ressource_Usage;
   }
 
   /**
@@ -143,12 +135,14 @@ public class WorkDefinitionImpl extends ProcessElementImpl implements WorkDefini
    * @generated
    */
   @Override
-  public void setRessource(Ressource newRessource)
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
-    Ressource oldRessource = ressource;
-    ressource = newRessource;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, PDL1Package.WORK_DEFINITION__RESSOURCE, oldRessource, ressource));
+    switch (featureID)
+    {
+      case PDL1Package.WORK_DEFINITION__RESSOURCE_USAGE:
+        return ((InternalEList<?>)getRessource_Usage()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -163,9 +157,8 @@ public class WorkDefinitionImpl extends ProcessElementImpl implements WorkDefini
     {
       case PDL1Package.WORK_DEFINITION__NAME:
         return getName();
-      case PDL1Package.WORK_DEFINITION__RESSOURCE:
-        if (resolve) return getRessource();
-        return basicGetRessource();
+      case PDL1Package.WORK_DEFINITION__RESSOURCE_USAGE:
+        return getRessource_Usage();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -175,6 +168,7 @@ public class WorkDefinitionImpl extends ProcessElementImpl implements WorkDefini
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -183,8 +177,9 @@ public class WorkDefinitionImpl extends ProcessElementImpl implements WorkDefini
       case PDL1Package.WORK_DEFINITION__NAME:
         setName((String)newValue);
         return;
-      case PDL1Package.WORK_DEFINITION__RESSOURCE:
-        setRessource((Ressource)newValue);
+      case PDL1Package.WORK_DEFINITION__RESSOURCE_USAGE:
+        getRessource_Usage().clear();
+        getRessource_Usage().addAll((Collection<? extends Ressource_Usage>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -203,8 +198,8 @@ public class WorkDefinitionImpl extends ProcessElementImpl implements WorkDefini
       case PDL1Package.WORK_DEFINITION__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case PDL1Package.WORK_DEFINITION__RESSOURCE:
-        setRessource((Ressource)null);
+      case PDL1Package.WORK_DEFINITION__RESSOURCE_USAGE:
+        getRessource_Usage().clear();
         return;
     }
     super.eUnset(featureID);
@@ -222,8 +217,8 @@ public class WorkDefinitionImpl extends ProcessElementImpl implements WorkDefini
     {
       case PDL1Package.WORK_DEFINITION__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case PDL1Package.WORK_DEFINITION__RESSOURCE:
-        return ressource != null;
+      case PDL1Package.WORK_DEFINITION__RESSOURCE_USAGE:
+        return ressource_Usage != null && !ressource_Usage.isEmpty();
     }
     return super.eIsSet(featureID);
   }

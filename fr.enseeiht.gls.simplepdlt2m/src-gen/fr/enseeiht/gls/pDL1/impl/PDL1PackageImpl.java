@@ -48,14 +48,14 @@ public class PDL1PackageImpl extends EPackageImpl implements PDL1Package
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass ressource_UsageEClass = null;
+  private EClass ressourceEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass ressourceEClass = null;
+  private EClass ressource_UsageEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -198,50 +198,6 @@ public class PDL1PackageImpl extends EPackageImpl implements PDL1Package
    * @generated
    */
   @Override
-  public EClass getRessource_Usage()
-  {
-    return ressource_UsageEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getRessource_Usage_Quantite()
-  {
-    return (EAttribute)ressource_UsageEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getRessource_Usage_Ressource()
-  {
-    return (EReference)ressource_UsageEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getRessource_Usage_Workdefinition()
-  {
-    return (EReference)ressource_UsageEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EClass getRessource()
   {
     return ressourceEClass;
@@ -275,6 +231,39 @@ public class PDL1PackageImpl extends EPackageImpl implements PDL1Package
    * @generated
    */
   @Override
+  public EClass getRessource_Usage()
+  {
+    return ressource_UsageEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getRessource_Usage_Quantite()
+  {
+    return (EAttribute)ressource_UsageEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getRessource_Usage_Ressource()
+  {
+    return (EReference)ressource_UsageEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getWorkDefinition()
   {
     return workDefinitionEClass;
@@ -297,7 +286,7 @@ public class PDL1PackageImpl extends EPackageImpl implements PDL1Package
    * @generated
    */
   @Override
-  public EReference getWorkDefinition_Ressource()
+  public EReference getWorkDefinition_Ressource_Usage()
   {
     return (EReference)workDefinitionEClass.getEStructuralFeatures().get(1);
   }
@@ -416,18 +405,17 @@ public class PDL1PackageImpl extends EPackageImpl implements PDL1Package
 
     processElementEClass = createEClass(PROCESS_ELEMENT);
 
-    ressource_UsageEClass = createEClass(RESSOURCE_USAGE);
-    createEAttribute(ressource_UsageEClass, RESSOURCE_USAGE__QUANTITE);
-    createEReference(ressource_UsageEClass, RESSOURCE_USAGE__RESSOURCE);
-    createEReference(ressource_UsageEClass, RESSOURCE_USAGE__WORKDEFINITION);
-
     ressourceEClass = createEClass(RESSOURCE);
     createEAttribute(ressourceEClass, RESSOURCE__NAME);
     createEAttribute(ressourceEClass, RESSOURCE__QUANTITE);
 
+    ressource_UsageEClass = createEClass(RESSOURCE_USAGE);
+    createEAttribute(ressource_UsageEClass, RESSOURCE_USAGE__QUANTITE);
+    createEReference(ressource_UsageEClass, RESSOURCE_USAGE__RESSOURCE);
+
     workDefinitionEClass = createEClass(WORK_DEFINITION);
     createEAttribute(workDefinitionEClass, WORK_DEFINITION__NAME);
-    createEReference(workDefinitionEClass, WORK_DEFINITION__RESSOURCE);
+    createEReference(workDefinitionEClass, WORK_DEFINITION__RESSOURCE_USAGE);
 
     workSequenceEClass = createEClass(WORK_SEQUENCE);
     createEAttribute(workSequenceEClass, WORK_SEQUENCE__LINK_TYPE);
@@ -470,8 +458,8 @@ public class PDL1PackageImpl extends EPackageImpl implements PDL1Package
     // Set bounds for type parameters
 
     // Add supertypes to classes
-    ressource_UsageEClass.getESuperTypes().add(this.getProcessElement());
     ressourceEClass.getESuperTypes().add(this.getProcessElement());
+    ressource_UsageEClass.getESuperTypes().add(this.getProcessElement());
     workDefinitionEClass.getESuperTypes().add(this.getProcessElement());
     workSequenceEClass.getESuperTypes().add(this.getProcessElement());
     guidanceEClass.getESuperTypes().add(this.getProcessElement());
@@ -483,18 +471,17 @@ public class PDL1PackageImpl extends EPackageImpl implements PDL1Package
 
     initEClass(processElementEClass, ProcessElement.class, "ProcessElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-    initEClass(ressource_UsageEClass, Ressource_Usage.class, "Ressource_Usage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getRessource_Usage_Quantite(), ecorePackage.getEInt(), "quantite", null, 0, 1, Ressource_Usage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getRessource_Usage_Ressource(), this.getRessource(), null, "ressource", null, 0, 1, Ressource_Usage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getRessource_Usage_Workdefinition(), this.getWorkDefinition(), null, "workdefinition", null, 0, 1, Ressource_Usage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
     initEClass(ressourceEClass, Ressource.class, "Ressource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getRessource_Name(), ecorePackage.getEString(), "name", null, 0, 1, Ressource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getRessource_Quantite(), ecorePackage.getEInt(), "quantite", null, 0, 1, Ressource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+    initEClass(ressource_UsageEClass, Ressource_Usage.class, "Ressource_Usage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getRessource_Usage_Quantite(), ecorePackage.getEInt(), "quantite", null, 0, 1, Ressource_Usage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getRessource_Usage_Ressource(), this.getRessource(), null, "ressource", null, 0, 1, Ressource_Usage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
     initEClass(workDefinitionEClass, WorkDefinition.class, "WorkDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getWorkDefinition_Name(), ecorePackage.getEString(), "name", null, 0, 1, WorkDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getWorkDefinition_Ressource(), this.getRessource(), null, "ressource", null, 0, 1, WorkDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getWorkDefinition_Ressource_Usage(), this.getRessource_Usage(), null, "Ressource_Usage", null, 0, -1, WorkDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(workSequenceEClass, WorkSequence.class, "WorkSequence", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getWorkSequence_LinkType(), this.getWorkSequenceType(), "linkType", null, 0, 1, WorkSequence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

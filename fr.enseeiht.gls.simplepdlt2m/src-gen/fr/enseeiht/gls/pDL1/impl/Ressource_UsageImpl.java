@@ -6,7 +6,6 @@ package fr.enseeiht.gls.pDL1.impl;
 import fr.enseeiht.gls.pDL1.PDL1Package;
 import fr.enseeiht.gls.pDL1.Ressource;
 import fr.enseeiht.gls.pDL1.Ressource_Usage;
-import fr.enseeiht.gls.pDL1.WorkDefinition;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -25,7 +24,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <ul>
  *   <li>{@link fr.enseeiht.gls.pDL1.impl.Ressource_UsageImpl#getQuantite <em>Quantite</em>}</li>
  *   <li>{@link fr.enseeiht.gls.pDL1.impl.Ressource_UsageImpl#getRessource <em>Ressource</em>}</li>
- *   <li>{@link fr.enseeiht.gls.pDL1.impl.Ressource_UsageImpl#getWorkdefinition <em>Workdefinition</em>}</li>
  * </ul>
  *
  * @generated
@@ -61,16 +59,6 @@ public class Ressource_UsageImpl extends ProcessElementImpl implements Ressource
    * @ordered
    */
   protected Ressource ressource;
-
-  /**
-   * The cached value of the '{@link #getWorkdefinition() <em>Workdefinition</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getWorkdefinition()
-   * @generated
-   * @ordered
-   */
-  protected WorkDefinition workdefinition;
 
   /**
    * <!-- begin-user-doc -->
@@ -169,51 +157,6 @@ public class Ressource_UsageImpl extends ProcessElementImpl implements Ressource
    * @generated
    */
   @Override
-  public WorkDefinition getWorkdefinition()
-  {
-    if (workdefinition != null && workdefinition.eIsProxy())
-    {
-      InternalEObject oldWorkdefinition = (InternalEObject)workdefinition;
-      workdefinition = (WorkDefinition)eResolveProxy(oldWorkdefinition);
-      if (workdefinition != oldWorkdefinition)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, PDL1Package.RESSOURCE_USAGE__WORKDEFINITION, oldWorkdefinition, workdefinition));
-      }
-    }
-    return workdefinition;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public WorkDefinition basicGetWorkdefinition()
-  {
-    return workdefinition;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setWorkdefinition(WorkDefinition newWorkdefinition)
-  {
-    WorkDefinition oldWorkdefinition = workdefinition;
-    workdefinition = newWorkdefinition;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, PDL1Package.RESSOURCE_USAGE__WORKDEFINITION, oldWorkdefinition, workdefinition));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
     switch (featureID)
@@ -223,9 +166,6 @@ public class Ressource_UsageImpl extends ProcessElementImpl implements Ressource
       case PDL1Package.RESSOURCE_USAGE__RESSOURCE:
         if (resolve) return getRessource();
         return basicGetRessource();
-      case PDL1Package.RESSOURCE_USAGE__WORKDEFINITION:
-        if (resolve) return getWorkdefinition();
-        return basicGetWorkdefinition();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -245,9 +185,6 @@ public class Ressource_UsageImpl extends ProcessElementImpl implements Ressource
         return;
       case PDL1Package.RESSOURCE_USAGE__RESSOURCE:
         setRessource((Ressource)newValue);
-        return;
-      case PDL1Package.RESSOURCE_USAGE__WORKDEFINITION:
-        setWorkdefinition((WorkDefinition)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -269,9 +206,6 @@ public class Ressource_UsageImpl extends ProcessElementImpl implements Ressource
       case PDL1Package.RESSOURCE_USAGE__RESSOURCE:
         setRessource((Ressource)null);
         return;
-      case PDL1Package.RESSOURCE_USAGE__WORKDEFINITION:
-        setWorkdefinition((WorkDefinition)null);
-        return;
     }
     super.eUnset(featureID);
   }
@@ -290,8 +224,6 @@ public class Ressource_UsageImpl extends ProcessElementImpl implements Ressource
         return quantite != QUANTITE_EDEFAULT;
       case PDL1Package.RESSOURCE_USAGE__RESSOURCE:
         return ressource != null;
-      case PDL1Package.RESSOURCE_USAGE__WORKDEFINITION:
-        return workdefinition != null;
     }
     return super.eIsSet(featureID);
   }

@@ -93,19 +93,19 @@ public class PDL1Switch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case PDL1Package.RESSOURCE_USAGE:
-      {
-        Ressource_Usage ressource_Usage = (Ressource_Usage)theEObject;
-        T result = caseRessource_Usage(ressource_Usage);
-        if (result == null) result = caseProcessElement(ressource_Usage);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case PDL1Package.RESSOURCE:
       {
         Ressource ressource = (Ressource)theEObject;
         T result = caseRessource(ressource);
         if (result == null) result = caseProcessElement(ressource);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case PDL1Package.RESSOURCE_USAGE:
+      {
+        Ressource_Usage ressource_Usage = (Ressource_Usage)theEObject;
+        T result = caseRessource_Usage(ressource_Usage);
+        if (result == null) result = caseProcessElement(ressource_Usage);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -170,22 +170,6 @@ public class PDL1Switch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Ressource Usage</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Ressource Usage</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseRessource_Usage(Ressource_Usage object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Ressource</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -197,6 +181,22 @@ public class PDL1Switch<T> extends Switch<T>
    * @generated
    */
   public T caseRessource(Ressource object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Ressource Usage</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Ressource Usage</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseRessource_Usage(Ressource_Usage object)
   {
     return null;
   }

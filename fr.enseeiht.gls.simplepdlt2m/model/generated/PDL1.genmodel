@@ -17,18 +17,17 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PDL1.ecore#//Process/processElements"/>
     </genClasses>
     <genClasses ecoreClass="PDL1.ecore#//ProcessElement"/>
-    <genClasses ecoreClass="PDL1.ecore#//Ressource_Usage">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PDL1.ecore#//Ressource_Usage/quantite"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference PDL1.ecore#//Ressource_Usage/ressource"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference PDL1.ecore#//Ressource_Usage/workdefinition"/>
-    </genClasses>
     <genClasses ecoreClass="PDL1.ecore#//Ressource">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PDL1.ecore#//Ressource/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PDL1.ecore#//Ressource/quantite"/>
     </genClasses>
+    <genClasses ecoreClass="PDL1.ecore#//Ressource_Usage">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PDL1.ecore#//Ressource_Usage/quantite"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference PDL1.ecore#//Ressource_Usage/ressource"/>
+    </genClasses>
     <genClasses ecoreClass="PDL1.ecore#//WorkDefinition">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PDL1.ecore#//WorkDefinition/name"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference PDL1.ecore#//WorkDefinition/ressource"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PDL1.ecore#//WorkDefinition/Ressource_Usage"/>
     </genClasses>
     <genClasses ecoreClass="PDL1.ecore#//WorkSequence">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PDL1.ecore#//WorkSequence/linkType"/>
