@@ -7,7 +7,7 @@ Bundle-Activator: fr.enseeiht.gls.petrinetm2t.ui.Activator
 Bundle-Vendor: Eclipse Modeling Project
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- org.eclipse.core.resources, 
+ org.eclipse.core.resources,
  fr.enseeiht.gls.petrinetm2t,
  org.eclipse.emf.ecore,
  org.eclipse.emf.ecore.xmi,

@@ -1,0 +1,46 @@
+[comment encoding = UTF-8 /]
+[module toNET('http://www.example.org/petrinet')]
+
+
+[template public petrinetToNET(aPetriNet : PetriNet)]
+[comment @main/]
+[file (aPetriNet.name.concat('.net'), false, 'UTF-8')]
+net [aPetriNet.name/]
+[for (place : Place | aPetriNet.get_places())]
+pl [place.name/] ([place.token/])
+[/for]
+
+[for (transition : Transition | aPetriNet.get_transitions())]
+tr [transition.name/] [transition.write_transition_in()/] -> [transition.write_transition_out()/]
+[/for]
+
+[/file]
+[/template]
+
+[query public get_places(x : PetriNet) : OrderedSet(Place) = 
+	x.Element->select(p | p.oclIsTypeOf(Place))
+			 ->collect(p | p.oclAsType(Place))
+			 ->asOrderedSet()
+/]
+
+[query public get_transitions(x : PetriNet) : OrderedSet(Transition) = 
+	x.Element->select(p | p.oclIsTypeOf(Transition))
+			 ->collect(p | p.oclAsType(Transition))
+			 ->asOrderedSet()
+/]
+
+[template public write_transition_in(x : Transition)]
+[for (arc : Arc | x._in)][arc.get_from_place()/][/for]
+[/template]
+
+[template public get_from_place(x : Arc)]
+[x.from.name/][if (x.type = 1)]?[x.weight/][elseif (x.weight > 1)]*[x.weight/][/if]
+[/template]
+
+[template public write_transition_out(x : Transition)]
+[for (arc : Arc | x.out)][arc.get_to_place()/][/for]
+[/template]
+
+[template public get_to_place(x : Arc)]
+[x.to.name/][if (x.weight > 1)]*[x.weight/][/if]
+[/template]

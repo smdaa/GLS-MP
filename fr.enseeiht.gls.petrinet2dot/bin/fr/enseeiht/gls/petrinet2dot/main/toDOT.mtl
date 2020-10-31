@@ -1,0 +1,63 @@
+[comment encoding = UTF-8 /]
+[module toDOT('http://www.example.org/petrinet')]
+
+
+[template public petrineToDOT(aPetriNet : PetriNet)]
+[comment @main/]
+[file (aPetriNet.name.concat('.dot'), false, 'UTF-8')]
+digraph [aPetriNet.name/] {
+
+[for (pl : Place | aPetriNet.get_places())]
+	[pl.name/] [(pl.name + ' ' + pl.token.toString()).getLabel()/] ['circle'.getShape()/];
+[/for]
+
+[for (tr : Transition | aPetriNet.get_transitions())]
+	[tr.name/] ['box'.getShape()/];
+[/for]
+
+[for (arc : Arc | aPetriNet.get_arcs())]
+[if (arc.type = 1)]
+edge ['red'.getColor()/];
+[/if]
+[arc.from.name/] -> [arc.to.name/]
+[if (arc.weight > 1)]
+ [arc.weight.toString().getLabel()/] 
+[/if];
+[if (arc.type = 1)]
+edge ['black'.getColor()/];
+[/if]
+[/for]
+}
+
+[/file]
+[/template]
+
+[query public get_places(x : PetriNet) : OrderedSet(Place) = 
+	x.Element->select(p | p.oclIsTypeOf(Place))
+			 ->collect(p | p.oclAsType(Place))
+			 ->asOrderedSet()
+/]
+
+[query public get_transitions(x : PetriNet) : OrderedSet(Transition) = 
+	x.Element->select(p | p.oclIsTypeOf(Transition))
+			 ->collect(p | p.oclAsType(Transition))
+			 ->asOrderedSet()
+/]
+
+[query public get_arcs(x : PetriNet) : OrderedSet(Arc) = 
+	x.Element->select(p | p.oclIsTypeOf(Arc))
+			 ->collect(p | p.oclAsType(Arc))
+			 ->asOrderedSet()
+/]
+
+[template public getLabel(s : String)]
+['['/]label="[s/]"[']'/]
+[/template]
+
+[template public getShape(s : String)]
+['['/]shape=[s/][']'/]
+[/template]
+
+[template public getColor(s : String)]
+['['/]color=[s/][']'/]
+[/template]

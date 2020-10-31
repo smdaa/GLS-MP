@@ -1,18 +1,27 @@
 module SimplePDL2PetriNet;
 create OUT: petrinet from  IN: simplepdl;
 
--- Obtenir le processus qui contient ce process element.
--- Remarque: Ce helper ne serait pas utile si une référence opposite
--- avait été placée entre Process et ProcessElement
-helper context simplepdl!ProcessElement
-def: getProcess(): simplepdl!Process =
-	simplepdl!Process.allInstances()
-		->select(p | p.processElements->includes(self))
-		->asSequence()->first();
 -- Traduire un Process en un PetriNet de même nom
 rule Process2PetriNet {
 	from p: simplepdl!Process
-	to pn: petrinet!PetriNet (name <- p.name)
+	to pn: petrinet!PetriNet (
+		name <- p.name,
+		Element <- p.processElements  -> collect(processelt| Set{   thisModule.resolveTemp(processelt, 'p_ready'),
+												thisModule.resolveTemp(processelt, 'p_running'),
+												thisModule.resolveTemp(processelt, 'p_started'),
+												thisModule.resolveTemp(processelt, 'p_finished'),
+												thisModule.resolveTemp(processelt, 't_start'),
+												thisModule.resolveTemp(processelt, 't_finish'),
+												thisModule.resolveTemp(processelt, 'p_ressource'),
+												thisModule.resolveTemp(processelt, 'a_ready2start'),
+												thisModule.resolveTemp(processelt, 'a_start2running'),
+												thisModule.resolveTemp(processelt, 'a_start2started'),
+												thisModule.resolveTemp(processelt, 'a_running2finish'),
+												thisModule.resolveTemp(processelt, 'a_finish2finished'),
+												thisModule.resolveTemp(processelt, 'arc'),
+												thisModule.resolveTemp(processelt, 'allocation'),
+												thisModule.resolveTemp(processelt, 'desallocation')})
+		)	
 }
 
 -- Traduire une WorkDefinition en un motif sur le réseau de Petri
@@ -97,7 +106,7 @@ rule Ressource2PetriNet {
 	from ressource: simplepdl!Ressource
 	to 
 		p_ressource: petrinet!Place(
-			name <- ressource.name,
+			name <- 'ressource_' + ressource.name,
 			token <- ressource.quantite)
 }
 
