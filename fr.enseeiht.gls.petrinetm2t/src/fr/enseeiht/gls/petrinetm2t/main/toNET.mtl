@@ -30,7 +30,7 @@ tr [transition.name/] [transition.write_transition_in()/] -> [transition.write_t
 /]
 
 [template public write_transition_in(x : Transition)]
-[for (arc : Arc | x._in)][arc.get_from_place()/][/for]
+[for (arc : Arc | x._in)] [arc.get_from_place()/][/for]
 [/template]
 
 [template public get_from_place(x : Arc)]
@@ -38,7 +38,7 @@ tr [transition.name/] [transition.write_transition_in()/] -> [transition.write_t
 [/template]
 
 [template public write_transition_out(x : Transition)]
-[for (arc : Arc | x.out)][arc.get_to_place()/][/for]
+[for (arc : Arc | x.out)] [ arc.get_to_place() /][/for]
 [/template]
 
 [template public get_to_place(x : Arc)]
