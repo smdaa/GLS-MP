@@ -48,7 +48,10 @@ public class SimplePDL2PetriNet {
 		ResourceSet resSet2 = new ResourceSetImpl();
 
 		// Définir le modèle simplepdl
-		URI modelURIbis = URI.createURI("models/Converted.xmi");
+		URI modelURIbis = URI.createURI("models/Process-exemple-converted.xmi");
+		if (args.length == 1) {
+			modelURIbis = URI.createURI("models/" + (args[0]).substring(0, args[0].length() - 4) + "-converted.xmi");
+		}
 		Resource resource2 = resSet2.createResource(modelURIbis);
 
 		// Récupérer le premier élément du modéle (élément racine)
