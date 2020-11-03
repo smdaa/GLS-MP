@@ -1,0 +1,4 @@
+digraph pdl-simple {
+rankdir=LR;
+cook -> eat [ label="finish2start" ];
+}

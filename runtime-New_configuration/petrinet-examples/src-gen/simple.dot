@@ -1,0 +1,49 @@
+digraph simple {
+
+	cook_ready [label="cook_ready 1"] [shape=circle];
+	cook_started [label="cook_started 0"] [shape=circle];
+	cook_running [label="cook_running 0"] [shape=circle];
+	cook_finished [label="cook_finished 0"] [shape=circle];
+	eat_ready [label="eat_ready 1"] [shape=circle];
+	eat_started [label="eat_started 0"] [shape=circle];
+	eat_running [label="eat_running 0"] [shape=circle];
+	eat_finished [label="eat_finished 0"] [shape=circle];
+	plat [label="plat 1"] [shape=circle];
+
+	cook_start [shape=box];
+	cook_finish [shape=box];
+	eat_start [shape=box];
+	eat_finish [shape=box];
+
+cook_ready -> cook_start
+;
+cook_start -> cook_started
+;
+cook_start -> cook_running
+;
+cook_running -> cook_finish
+;
+cook_finish -> cook_finished
+;
+eat_ready -> eat_start
+;
+eat_start -> eat_started
+;
+eat_start -> eat_running
+;
+eat_running -> eat_finish
+;
+eat_finish -> eat_finished
+;
+cook_finished -> eat_start
+;
+plat -> cook_start
+;
+cook_finish -> plat
+;
+plat -> eat_start
+;
+eat_finish -> plat
+;
+}
+

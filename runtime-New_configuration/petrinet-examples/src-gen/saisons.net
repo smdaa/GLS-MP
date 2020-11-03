@@ -1,0 +1,11 @@
+net saisons
+pl Hiver (1)
+pl Printemps (0)
+pl Ete (0)
+pl Automne (0)
+
+tr h2p  Hiver ->  Printemps
+tr p2e  Printemps ->  Ete
+tr e2a  Ete ->  Automne
+tr a2h  Automne ->  Hiver
+
