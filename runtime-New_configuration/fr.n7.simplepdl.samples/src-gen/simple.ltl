@@ -1,0 +1,5 @@
+op finished = cook_finished /\eat_finished /\;
+[] (finished => dead);
+[] <> dead;
+[] (dead => finished);
+- <> finished;
