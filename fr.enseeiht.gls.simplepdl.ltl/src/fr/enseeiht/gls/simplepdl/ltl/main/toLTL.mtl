@@ -1,0 +1,32 @@
+[comment encoding = UTF-8 /]
+[module toLTL('http://simplepdl')]
+
+
+[template public processToLTL(aProcess : Process)]
+[comment @main/]
+[file (aProcess.name.concat('.ltl'), false, 'UTF-8')]
+op finished = [for (wd : WorkDefinition | aProcess.get_wd())][wd.name/]_finished [if wd <> aProcess.get_lastwd()]/\[/if] [if wd = aProcess.get_lastwd()];[/if] [/for]
+['['/][']'/] (finished => dead);
+['['/][']'/] <> dead;
+['['/][']'/] (dead => finished);
+- <> finished;
+
+[for (wd : WorkDefinition | aProcess.get_wd())]
+['['/][']'/](-([wd.name/]_ready /\ [wd.name/]_running));
+['['/][']'/](-([wd.name/]_finished /\ [wd.name/]_running));
+['['/][']'/](-([wd.name/]_ready/\[wd.name/]_finished));
+[/for]
+[/file]
+[/template]
+
+[query public get_wd(x : Process) : OrderedSet(WorkDefinition) = 
+	x.processElements->select(p | p.oclIsTypeOf(WorkDefinition))
+			 ->collect(p | p.oclAsType(WorkDefinition))
+			 ->asOrderedSet()
+/]
+
+[query public get_lastwd(x : Process) : WorkDefinition =
+	x.processElements->select(p | p.oclIsTypeOf(WorkDefinition))
+	->collect(p | p.oclAsType(WorkDefinition))
+	->asOrderedSet() ->last()
+/]

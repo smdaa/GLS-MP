@@ -11,6 +11,6 @@ pl plat (1)
 
 tr cook_start  cook_ready plat ->  cook_started cook_running
 tr cook_finish  cook_running ->  cook_finished plat
-tr eat_start  eat_ready cook_finished plat ->  eat_started eat_running
+tr eat_start  eat_ready cook_finished?1 plat ->  eat_started eat_running
 tr eat_finish  eat_running ->  eat_finished plat
 

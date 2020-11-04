@@ -1,5 +1,12 @@
-op finished = cook_finished /\eat_finished /\;
+op finished = cook_finished /\  eat_finished  ; 
 [] (finished => dead);
 [] <> dead;
 [] (dead => finished);
 - <> finished;
+
+[](-(cook_ready /\ cook_running));
+[](-(cook_finished /\ cook_running));
+[](-(cook_ready/\cook_finished));
+[](-(eat_ready /\ eat_running));
+[](-(eat_finished /\ eat_running));
+[](-(eat_ready/\eat_finished));

@@ -34,7 +34,7 @@ tr [transition.name/] [transition.write_transition_in()/] -> [transition.write_t
 [/template]
 
 [template public get_from_place(x : Arc)]
-[x.from.name/][if (x.type = 1)]?[x.weight/][elseif (x.weight > 1)]*[x.weight/][/if]
+[x.from.name/][if (x.type = TypeOfArc::Read_arc)]?[x.weight/][elseif (x.weight > 1)]*[x.weight/][/if]
 [/template]
 
 [template public write_transition_out(x : Transition)]
