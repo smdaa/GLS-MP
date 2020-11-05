@@ -2,15 +2,16 @@
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
   <viewpoint:DAnalysis uid="_MdOp4AP4EeutZbK-ljKWcQ" selectedViews="_MeenEAP4EeutZbK-ljKWcQ _mkDo0AP4EeutZbK-ljKWcQ _mkHTMAP4EeutZbK-ljKWcQ _mkfGoAP4EeutZbK-ljKWcQ" version="14.1.0.201810161215">
     <semanticResources>petrinet.ecore</semanticResources>
-    <semanticResources>PetriNet.ecore</semanticResources>
     <semanticResources>http://www.eclipse.org/emf/2002/Ecore</semanticResources>
-    <semanticResources>PetriNet.ocl</semanticResources>
     <semanticResources>PetriNet.ocl.oclas</semanticResources>
     <semanticResources>http://www.eclipse.org/ocl/2015/Pivot</semanticResources>
     <semanticResources>PetriNet.ecore.oclas</semanticResources>
     <semanticResources>http://www.eclipse.org/ocl/2015/Library.oclas</semanticResources>
-    <semanticResources>net-saisons.xmi</semanticResources>
-    <semanticResources>PetriNet.genmodel</semanticResources>
+    <semanticResources>PetriNet.ecore</semanticResources>
+    <semanticResources>ko-.....xmi</semanticResources>
+    <semanticResources>ko_Transition.xmi</semanticResources>
+    <semanticResources>ko_Poids_Arc.xmi</semanticResources>
+    <semanticResources>ko_two_nodes_same_name.xmi</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_MeenEAP4EeutZbK-ljKWcQ">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Me6r8QP4EeutZbK-ljKWcQ" name="petrinet" repPath="#_Met3oAP4EeutZbK-ljKWcQ">

@@ -9,6 +9,6 @@
   <processElements xsi:type="simplepdl:WorkSequence" linkType="finishToStart" predecessor="//@processElements.0" successor="//@processElements.2"/>
   <processElements xsi:type="simplepdl:WorkSequence" predecessor="//@processElements.0" successor="//@processElements.3"/>
   <processElements xsi:type="simplepdl:WorkSequence" linkType="finishToFinish" predecessor="//@processElements.2" successor="//@processElements.3"/>
-  <processElements xsi:type="simplepdl:WorkDefinition"/>
-  <processElements xsi:type="simplepdl:WorkDefinition"/>
+  <processElements xsi:type="simplepdl:Guidance" element="//@processElements.0 //@processElements.3" text="dz"/>
+  <processElements xsi:type="simplepdl:WorkSequence"/>
 </simplepdl:Process>

@@ -11,7 +11,7 @@
       <package
             uri="http://www.example.org/petrinet"
             class="petrinet.PetrinetPackage"
-            genModel="model/PetriNet.genmodel"/>
+            genModel="PetriNet.genmodel"/>
    </extension>
 
 </plugin>
