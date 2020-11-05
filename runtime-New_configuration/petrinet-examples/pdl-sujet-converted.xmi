@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="ASCII"?>
+<petrinet:PetriNet xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:petrinet="http://www.example.org/petrinet" name="sujet">
+  <Element xsi:type="petrinet:Place" out="//@Element.6" name="Conception_ready" token="1"/>
+  <Element xsi:type="petrinet:Place" in="//@Element.7" out="//@Element.44 //@Element.47" name="Conception_started"/>
+  <Element xsi:type="petrinet:Place" in="//@Element.8" out="//@Element.9" name="Conception_running"/>
+  <Element xsi:type="petrinet:Place" in="//@Element.10" out="//@Element.45 //@Element.46" name="Conception_finished"/>
+  <Element xsi:type="petrinet:Transition" in="//@Element.6 //@Element.54 //@Element.58" out="//@Element.7 //@Element.8" name="Conception_start"/>
+  <Element xsi:type="petrinet:Transition" in="//@Element.9" out="//@Element.10 //@Element.55 //@Element.59" name="Conception_finish"/>
+  <Element xsi:type="petrinet:Arc" to="//@Element.4" from="//@Element.0" weight="1" type="Normal"/>
+  <Element xsi:type="petrinet:Arc" to="//@Element.1" from="//@Element.4" weight="1" type="Normal"/>
+  <Element xsi:type="petrinet:Arc" to="//@Element.2" from="//@Element.4" weight="1" type="Normal"/>
+  <Element xsi:type="petrinet:Arc" to="//@Element.5" from="//@Element.2" weight="1" type="Normal"/>
+  <Element xsi:type="petrinet:Arc" to="//@Element.3" from="//@Element.5" weight="1" type="Normal"/>
+  <Element xsi:type="petrinet:Place" out="//@Element.17" name="R&#xe9;dactionDoc_ready" token="1"/>
+  <Element xsi:type="petrinet:Place" in="//@Element.18" name="R&#xe9;dactionDoc_started"/>
+  <Element xsi:type="petrinet:Place" in="//@Element.19" out="//@Element.20" name="R&#xe9;dactionDoc_running"/>
+  <Element xsi:type="petrinet:Place" in="//@Element.21" name="R&#xe9;dactionDoc_finished"/>
+  <Element xsi:type="petrinet:Transition" in="//@Element.17 //@Element.44 //@Element.62 //@Element.66" out="//@Element.18 //@Element.19" name="R&#xe9;dactionDoc_start"/>
+  <Element xsi:type="petrinet:Transition" in="//@Element.20 //@Element.45" out="//@Element.21 //@Element.63 //@Element.67" name="R&#xe9;dactionDoc_finish"/>
+  <Element xsi:type="petrinet:Arc" to="//@Element.15" from="//@Element.11" weight="1" type="Normal"/>
+  <Element xsi:type="petrinet:Arc" to="//@Element.12" from="//@Element.15" weight="1" type="Normal"/>
+  <Element xsi:type="petrinet:Arc" to="//@Element.13" from="//@Element.15" weight="1" type="Normal"/>
+  <Element xsi:type="petrinet:Arc" to="//@Element.16" from="//@Element.13" weight="1" type="Normal"/>
+  <Element xsi:type="petrinet:Arc" to="//@Element.14" from="//@Element.16" weight="1" type="Normal"/>
+  <Element xsi:type="petrinet:Place" out="//@Element.28" name="D&#xe9;veloppement_ready" token="1"/>
+  <Element xsi:type="petrinet:Place" in="//@Element.29" name="D&#xe9;veloppement_started"/>
+  <Element xsi:type="petrinet:Place" in="//@Element.30" out="//@Element.31" name="D&#xe9;veloppement_running"/>
+  <Element xsi:type="petrinet:Place" in="//@Element.32" out="//@Element.48" name="D&#xe9;veloppement_finished"/>
+  <Element xsi:type="petrinet:Transition" in="//@Element.28 //@Element.46 //@Element.56 //@Element.60" out="//@Element.29 //@Element.30" name="D&#xe9;veloppement_start"/>
+  <Element xsi:type="petrinet:Transition" in="//@Element.31" out="//@Element.32 //@Element.57 //@Element.61" name="D&#xe9;veloppement_finish"/>
+  <Element xsi:type="petrinet:Arc" to="//@Element.26" from="//@Element.22" weight="1" type="Normal"/>
+  <Element xsi:type="petrinet:Arc" to="//@Element.23" from="//@Element.26" weight="1" type="Normal"/>
+  <Element xsi:type="petrinet:Arc" to="//@Element.24" from="//@Element.26" weight="1" type="Normal"/>
+  <Element xsi:type="petrinet:Arc" to="//@Element.27" from="//@Element.24" weight="1" type="Normal"/>
+  <Element xsi:type="petrinet:Arc" to="//@Element.25" from="//@Element.27" weight="1" type="Normal"/>
+  <Element xsi:type="petrinet:Place" out="//@Element.39" name="R&#xe9;dactionTests_ready" token="1"/>
+  <Element xsi:type="petrinet:Place" in="//@Element.40" name="R&#xe9;dactionTests_started"/>
+  <Element xsi:type="petrinet:Place" in="//@Element.41" out="//@Element.42" name="R&#xe9;dactionTests_running"/>
+  <Element xsi:type="petrinet:Place" in="//@Element.43" name="R&#xe9;dactionTests_finished"/>
+  <Element xsi:type="petrinet:Transition" in="//@Element.39 //@Element.47 //@Element.64 //@Element.68" out="//@Element.40 //@Element.41" name="R&#xe9;dactionTests_start"/>
+  <Element xsi:type="petrinet:Transition" in="//@Element.42 //@Element.48" out="//@Element.43 //@Element.65 //@Element.69" name="R&#xe9;dactionTests_finish"/>
+  <Element xsi:type="petrinet:Arc" to="//@Element.37" from="//@Element.33" weight="1" type="Normal"/>
+  <Element xsi:type="petrinet:Arc" to="//@Element.34" from="//@Element.37" weight="1" type="Normal"/>
+  <Element xsi:type="petrinet:Arc" to="//@Element.35" from="//@Element.37" weight="1" type="Normal"/>
+  <Element xsi:type="petrinet:Arc" to="//@Element.38" from="//@Element.35" weight="1" type="Normal"/>
+  <Element xsi:type="petrinet:Arc" to="//@Element.36" from="//@Element.38" weight="1" type="Normal"/>
+  <Element xsi:type="petrinet:Arc" to="//@Element.15" from="//@Element.1" weight="1" type="Read_arc"/>
+  <Element xsi:type="petrinet:Arc" to="//@Element.16" from="//@Element.3" weight="1" type="Read_arc"/>
+  <Element xsi:type="petrinet:Arc" to="//@Element.26" from="//@Element.3" weight="1" type="Read_arc"/>
+  <Element xsi:type="petrinet:Arc" to="//@Element.37" from="//@Element.1" weight="1" type="Read_arc"/>
+  <Element xsi:type="petrinet:Arc" to="//@Element.38" from="//@Element.25" weight="1" type="Read_arc"/>
+  <Element xsi:type="petrinet:Place" in="//@Element.55" out="//@Element.54" name="concepteur" token="3"/>
+  <Element xsi:type="petrinet:Place" in="//@Element.57" out="//@Element.56" name="d&#xe9;veloppeur" token="2"/>
+  <Element xsi:type="petrinet:Place" in="//@Element.59 //@Element.61 //@Element.63 //@Element.65" out="//@Element.58 //@Element.60 //@Element.62 //@Element.64" name="machine" token="4"/>
+  <Element xsi:type="petrinet:Place" in="//@Element.67" out="//@Element.66" name="r&#xe9;dacteur" token="1"/>
+  <Element xsi:type="petrinet:Place" in="//@Element.69" out="//@Element.68" name="testeur" token="2"/>
+  <Element xsi:type="petrinet:Arc" to="//@Element.4" from="//@Element.49" weight="2"/>
+  <Element xsi:type="petrinet:Arc" to="//@Element.49" from="//@Element.5" weight="2"/>
+  <Element xsi:type="petrinet:Arc" to="//@Element.26" from="//@Element.50" weight="2"/>
+  <Element xsi:type="petrinet:Arc" to="//@Element.50" from="//@Element.27" weight="2"/>
+  <Element xsi:type="petrinet:Arc" to="//@Element.4" from="//@Element.51" weight="2"/>
+  <Element xsi:type="petrinet:Arc" to="//@Element.51" from="//@Element.5" weight="2"/>
+  <Element xsi:type="petrinet:Arc" to="//@Element.26" from="//@Element.51" weight="3"/>
+  <Element xsi:type="petrinet:Arc" to="//@Element.51" from="//@Element.27" weight="3"/>
+  <Element xsi:type="petrinet:Arc" to="//@Element.15" from="//@Element.51" weight="1"/>
+  <Element xsi:type="petrinet:Arc" to="//@Element.51" from="//@Element.16" weight="1"/>
+  <Element xsi:type="petrinet:Arc" to="//@Element.37" from="//@Element.51" weight="2"/>
+  <Element xsi:type="petrinet:Arc" to="//@Element.51" from="//@Element.38" weight="2"/>
+  <Element xsi:type="petrinet:Arc" to="//@Element.15" from="//@Element.52" weight="1"/>
+  <Element xsi:type="petrinet:Arc" to="//@Element.52" from="//@Element.16" weight="1"/>
+  <Element xsi:type="petrinet:Arc" to="//@Element.37" from="//@Element.53" weight="1"/>
+  <Element xsi:type="petrinet:Arc" to="//@Element.53" from="//@Element.38" weight="1"/>
+</petrinet:PetriNet>

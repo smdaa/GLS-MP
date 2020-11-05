@@ -1,0 +1,30 @@
+digraph saisons {
+
+	Hiver [label="Hiver 1"] [shape=circle];
+	Printemps [label="Printemps 0"] [shape=circle];
+	Ete [label="Ete 0"] [shape=circle];
+	Automne [label="Automne 0"] [shape=circle];
+
+	h2p [shape=box];
+	p2e [shape=box];
+	e2a [shape=box];
+	a2h [shape=box];
+
+Hiver -> h2p
+;
+h2p -> Printemps
+;
+Printemps -> p2e
+;
+p2e -> Ete
+;
+Ete -> e2a
+;
+e2a -> Automne
+;
+Automne -> a2h
+;
+a2h -> Hiver
+;
+}
+

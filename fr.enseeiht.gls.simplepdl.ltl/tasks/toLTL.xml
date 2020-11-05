@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project default="toLTL" name="fr.enseeiht.gls.simplepdl.ltl">
-    <property name="ECLIPSE_HOME" value="../../../gls-v2019/eclipse-gls"/>
-    <property name="ECLIPSE_WORKSPACE" value="../.."/>
+    <property name="ECLIPSE_HOME" value="../../../../gls-v2019/eclipse-gls"/>
+    <property name="ECLIPSE_WORKSPACE" value="../../../../eclipse-workspace"/>
 
     <!-- The classpath with only the dependencies used by the project -->
     <path id="fr.enseeiht.gls.simplepdl.ltl.libraryclasspath">

@@ -1,0 +1,12 @@
+net prodcons
+pl P1 (1)
+pl P2 (0)
+pl Tampon (0)
+pl C1 (0)
+pl C2 (1)
+
+tr P1P2  P1 ->  P2
+tr P2P1  P2 ->  P1 Tampon
+tr TC2  Tampon C1 ->  C2
+tr C2C1  C2 ->  C1
+

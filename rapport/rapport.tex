@@ -65,8 +65,8 @@ Afin de capturer plus de contraintes On a ajouté les règles ocl suivantes (voi
     \item le nom d’une activité doit être composé d’au moins un caractère.
     \item le nom d’une resource doit être composé d’au moins un caractère.
     \item deux ressources ne peuvent pas avoir le même nom.
-    \item la quantité d'une ressource doit être >= 0
-    \item la quantité d'une ressource usé doit être > 0
+    \item la quantité d'une ressource doit être $\geq$ 0
+    \item la quantité d'une ressource usé doit être $>$ 0
     \item la quantité d'un ressource utilisé par une activité doit être inférieur ou égale à la quantité disponible
 \end{itemize}
 
@@ -103,8 +103,9 @@ Afin de capturer plus de contraintes On a ajouté les règles ocl suivantes (voi
 \section{Syntaxe concrète textuelle de SimplePDL avec Xtext}
 Xtext consiste à définir une syntaxe concrète textuelle pour un DSML au travers d’une grammaire, et il permet aussi 
 de construire un métamodèle conforme à la syntaxe concrète décrite 
-\subsection{Définition de la syntaxe PDL1: (voir \textbf{PDL1.xtext})}
-Un exemple de la syntaxe textuelle souhaité est donnée dans l'exemple ci-dessous.
+\subsection{Définition de la syntaxe PDL1:}
+(voir \textbf{PDL1.xtext}) \\
+Un exemple de la syntaxe textuelle généré est donnée dans l'exemple ci-dessous.
 \begin{verbatim}
     process dev {
         rs concepteur qt 3
@@ -141,7 +142,7 @@ Le principe de la transformation d’un modèle SimplePDL en Réseau de Pétri e
     \item Une WorkDefinition devient 4 places ready, started, running et finished et deux transitions start et finish.
     \item Une WorkSequence devient un read arc entre une place de l’activité précédente (started ou finished) et une transition de l’activité cible (start ou finish).
     \item Une Ressource devient une place, le nombre de jetons indique la quantité
-    \item Un Ressource\_Usage devient deux arc , un arc dont la multiplicité est la quantité utilisé allant de la place ressource vers la transition start de l'activité . et l'autre arc allant de la transition finish vers la place ressource
+    \item Un Ressource\_Usage devient deux arc , un arc (allocation) dont la multiplicité est la quantité utilisé allant de la place ressource vers la transition start de l'activité . et l'autre arc (déallocation)allant de la transition finish vers la place ressource
 \end{itemize}
 
 \section{Transformation SimplePDL vers PetriNet en utilisant ATL}
@@ -162,6 +163,7 @@ en utilisant
 thisModule.resolveTemp(..)
 \end{verbatim}
 \section{Tests de la transformation M2M}
+\subsection{Modèle simple}
 On commence par tester la transformation sur un modèle simple (voir \textbf{pdl-simple.xmi}), il est composé de 2 activités : (cook et eat)
 ,une dépendance de type finishTostart entre les 2 activités, et une ressource plat utilisé par cook et eat.
 \begin{figure}[H]
@@ -173,8 +175,97 @@ la transformation nous donne le modèle Petrinet suivant:
     \centering
     \includegraphics[width = 10cm]{net-simple.png}
 \end{figure}
-en utilisant le stepper analyser de l'outil netdraw notre modèle Petrinet semble avoir le comportement correcte
-\section{Transformation PetriNet vers Tina en utilisant Acceleo}
+en utilisant le stepper analyser de l'outil netdraw notre modèle Petrinet semble avoir le comportement correcte.
+\subsubsection{Validation de la transformation avec l'outil selt}
+On génère les propriétés de sûreté du modèle conforme a SimplePDL en utilisant l'outil Acceleo (\textbf{voir toLTL.mtl})
+pour vérifier que les invariants sur le modèle de processus sont préservés sur le modèle de réseau de Petri correspondant. \\
+fichier simple.ltl généré :
+\begin{verbatim}
+    op finished = cook_finished /\  eat_finished  ; 
+    [] (finished => dead);
+    [] <> dead;
+    [] (dead => finished);
+    - <> finished;
+
+    [](-(cook_ready /\ cook_running));
+    [](-(cook_finished /\ cook_running));
+    [](-(cook_ready/\cook_finished));
+    [](-(eat_ready /\ eat_running));
+    [](-(eat_finished /\ eat_running));
+    [](-(eat_ready/\eat_finished));
+\end{verbatim}
+Les 5 premières lignes c'est pour verifier que toutes les activités se terminent (on attend que propriété sera fausse et le model 
+checker exhibera un contre-exemple qui correspond à un scénario qui correspond à la terminaison du processus) \\
+Les dernières lignes c'est pour vérifier chaque activité est soit non commencée, soit en cours, soit terminée.
+Resultat du verification :
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 15cm]{selt-simple.png}
+\end{figure}
+\subsection{Modèle sujet}
+On teste la transformation sur le modèle inspiré de SPEM donnée dans le sujet :
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 15cm]{pdl-sujet.png}
+\end{figure}
+la transformation nous donne le modèle Petrinet suivant:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 10cm]{net-sujet.png}
+\end{figure}
 
 
+
+\section{Transformation PetriNet vers Tina/dot en utilisant Acceleo}
+Acceleo est un générateur de code source de la fondation Eclipse permettant de mettre en ouvre 
+l'approche MDA (Model driven architecture) pour réaliser des applications à partir de modèles basés sur EMF \\
+voir \textbf{toTINA.mtl} et voir \textbf{toDOT.mtl}
+\subsection{Tests de la transformation M2T}
+\subsubsection{Réseau saisons}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 5cm]{net-saisons.png}
+\end{figure}
+la transformation nous donne le texte tina suivant :
+\begin{verbatim}
+    net saisons
+    pl Hiver (1)
+    pl Printemps (0)
+    pl Ete (0)
+    pl Automne (0)
+
+    tr h2p  Hiver ->  Printemps
+    tr p2e  Printemps ->  Ete
+    tr e2a  Ete ->  Automne
+    tr a2h  Automne ->  Hiver
+\end{verbatim}
+la transformation nous donne le diagramme dot suivant :
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 10cm]{dot-saisons.png}
+\end{figure}
+\subsubsection{Réseau producteur consomateur}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 10cm]{net-prodcons.png}
+\end{figure}
+la transformation nous donne le texte tina suivant :
+\begin{verbatim}
+    net prodcons
+    pl P1 (1)
+    pl P2 (0)
+    pl Tampon (0)
+    pl C1 (0)
+    pl C2 (1)
+    
+    tr P1P2  P1 ->  P2
+    tr P2P1  P2 ->  P1 Tampon
+    tr TC2  Tampon C1 ->  C2
+    tr C2C1  C2 ->  C1
+\end{verbatim}
+la transformation nous donne le diagramme dot suivant :
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 15cm]{dot-prodcons.png}
+\end{figure}
 \end{document}

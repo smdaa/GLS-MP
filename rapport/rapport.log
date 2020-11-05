@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.10) (preloaded format=pdflatex 2020.10.27)  3 NOV 2020 16:10
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.10) (preloaded format=pdflatex 2020.10.27)  5 NOV 2020 16:54
 entering extended mode
 **c:/Users/MDAA/Documents/GLS-MP/rapport/rapport.tex
 (c:/Users/MDAA/Documents/GLS-MP/rapport/rapport.tex
@@ -196,50 +196,90 @@ Overfull \hbox (40.11836pt too wide) in paragraph at lines 78--79
  []
 
 [3 <c:/Users/MDAA/Documents/GLS-MP/rapport/SimplePDL.png>] [4 <c:/Users/MDAA/Documents/GLS-MP/rapport/PetriNet.png>]
-<SimplePDLXtext.png, id=26, 937.70325pt x 387.849pt>
+<SimplePDLXtext.png, id=28, 937.70325pt x 387.849pt>
 File: SimplePDLXtext.png Graphic file (type png)
 <use SimplePDLXtext.png>
-Package pdftex.def Info: SimplePDLXtext.png  used on input line 131.
+Package pdftex.def Info: SimplePDLXtext.png  used on input line 132.
 (pdftex.def)             Requested size: 512.1496pt x 211.83215pt.
 
-Overfull \hbox (40.11836pt too wide) in paragraph at lines 131--132
+Overfull \hbox (40.11836pt too wide) in paragraph at lines 132--133
  [][] 
  []
 
 
-Overfull \hbox (3.90314pt too wide) in paragraph at lines 134--134
+Overfull \hbox (3.90314pt too wide) in paragraph at lines 135--135
 []\OT1/cmr/bx/n/14.4 Transformation Sim-plePDL vers PetriNet en util-isant EMF/Java 
  []
 
 
-Overfull \hbox (7.93286pt too wide) in paragraph at lines 135--137
+Overfull \hbox (7.93286pt too wide) in paragraph at lines 136--138
 \OT1/cmr/m/n/10 de definir une trans-for-ma-tion de Sim-plePDL vers PetriNet en util-isant Java (voir \OT1/cmr/bx/n/10 Sim-plePDL2PetriNet.java\OT1/cmr/m/n/10 ) 
  []
 
 [5 <c:/Users/MDAA/Documents/GLS-MP/rapport/SimplePDLXtext.png>]
-<pdl-simple.png, id=32, 168.63pt x 221.82875pt>
+<pdl-simple.png, id=34, 168.63pt x 221.82875pt>
 File: pdl-simple.png Graphic file (type png)
 <use pdl-simple.png>
-Package pdftex.def Info: pdl-simple.png  used on input line 169.
+Package pdftex.def Info: pdl-simple.png  used on input line 171.
 (pdftex.def)             Requested size: 85.35826pt x 112.28833pt.
-<net-simple.png, id=33, 414.95026pt x 561.297pt>
+<net-simple.png, id=35, 484.81125pt x 540.8205pt>
 File: net-simple.png Graphic file (type png)
 <use net-simple.png>
-Package pdftex.def Info: net-simple.png  used on input line 174.
-(pdftex.def)             Requested size: 284.52756pt x 384.8801pt.
- [6 <c:/Users/MDAA/Documents/GLS-MP/rapport/pdl-simple.png>] [7 <c:/Users/MDAA/Documents/GLS-MP/rapport/net-simple.png>] (c:/Users\MDAA\Documents\GLS-MP\rapport\rapport.aux) ) 
+Package pdftex.def Info: net-simple.png  used on input line 176.
+(pdftex.def)             Requested size: 284.52756pt x 317.41437pt.
+ [6 <c:/Users/MDAA/Documents/GLS-MP/rapport/pdl-simple.png>]
+<selt-simple.png, id=40, 593.21625pt x 371.58826pt>
+File: selt-simple.png Graphic file (type png)
+<use selt-simple.png>
+Package pdftex.def Info: selt-simple.png  used on input line 203.
+(pdftex.def)             Requested size: 426.79134pt x 267.35056pt.
+ [7 <c:/Users/MDAA/Documents/GLS-MP/rapport/net-simple.png>]
+<pdl-sujet.png, id=46, 529.98pt x 140.32425pt>
+File: pdl-sujet.png Graphic file (type png)
+<use pdl-sujet.png>
+Package pdftex.def Info: pdl-sujet.png  used on input line 209.
+(pdftex.def)             Requested size: 426.79134pt x 113.00467pt.
+<net-sujet.png, id=47, 1174.3875pt x 2253.41875pt>
+File: net-sujet.png Graphic file (type png)
+<use net-sujet.png>
+Package pdftex.def Info: net-sujet.png  used on input line 214.
+(pdftex.def)             Requested size: 284.52756pt x 545.95482pt.
+ [8 <c:/Users/MDAA/Documents/GLS-MP/rapport/selt-simple.png> <c:/Users/MDAA/Documents/GLS-MP/rapport/pdl-sujet.png>]
+<net-saisons.png, id=53, 190.311pt x 195.129pt>
+File: net-saisons.png Graphic file (type png)
+<use net-saisons.png>
+Package pdftex.def Info: net-saisons.png  used on input line 227.
+(pdftex.def)             Requested size: 142.26378pt x 145.87297pt.
+ [9 <c:/Users/MDAA/Documents/GLS-MP/rapport/net-sujet.png>]
+<dot-saisons.png, id=58, 899.36pt x 869.2475pt>
+File: dot-saisons.png Graphic file (type png)
+<use dot-saisons.png>
+Package pdftex.def Info: dot-saisons.png  used on input line 245.
+(pdftex.def)             Requested size: 284.52756pt x 274.99487pt.
+<net-prodcons.png, id=59, 389.65575pt x 167.4255pt>
+File: net-prodcons.png Graphic file (type png)
+<use net-prodcons.png>
+Package pdftex.def Info: net-prodcons.png  used on input line 250.
+(pdftex.def)             Requested size: 284.52756pt x 122.26302pt.
+ [10 <c:/Users/MDAA/Documents/GLS-MP/rapport/net-saisons.png> <c:/Users/MDAA/Documents/GLS-MP/rapport/dot-saisons.png>]
+<dot-prodcons.png, id=65, 1066.98625pt x 391.4625pt>
+File: dot-prodcons.png Graphic file (type png)
+<use dot-prodcons.png>
+Package pdftex.def Info: dot-prodcons.png  used on input line 269.
+(pdftex.def)             Requested size: 426.79134pt x 156.58221pt.
+ [11 <c:/Users/MDAA/Documents/GLS-MP/rapport/net-prodcons.png> <c:/Users/MDAA/Documents/GLS-MP/rapport/dot-prodcons.png>] (c:/Users\MDAA\Documents\GLS-MP\rapport\rapport.aux) ) 
 Here is how much of TeX's memory you used:
- 1927 strings out of 480236
- 29733 string characters out of 2881032
- 311833 words of memory out of 3000000
- 18482 multiletter control sequences out of 15000+200000
+ 1970 strings out of 480236
+ 30492 string characters out of 2881032
+ 311835 words of memory out of 3000000
+ 18518 multiletter control sequences out of 15000+200000
  540153 words of font info for 46 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 60i,7n,66p,316b,231s stack positions out of 5000i,500n,10000p,200000b,50000s
- <C:\Users\MDAA\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk><C:/Users/MDAA/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/MDAA/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/MDAA/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/MDAA/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/MDAA/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on c:/Users\MDAA\Documents\GLS-MP\rapport\rapport.pdf (7 pages, 1652365 bytes).
+ 60i,7n,66p,344b,231s stack positions out of 5000i,500n,10000p,200000b,50000s
+ <C:\Users\MDAA\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk><C:/Users/MDAA/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/MDAA/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/MDAA/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/MDAA/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/MDAA/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/MDAA/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/MDAA/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on c:/Users\MDAA\Documents\GLS-MP\rapport\rapport.pdf (11 pages, 2053885 bytes).
 PDF statistics:
- 64 PDF objects out of 1000 (max. 8388607)
+ 98 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 31 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 66 words of extra memory for PDF output out of 10000 (max. 10000000)
 

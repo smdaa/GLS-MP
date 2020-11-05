@@ -1,0 +1,35 @@
+digraph prodcons {
+
+	P1 [label="P1 1"] [shape=circle];
+	P2 [label="P2 0"] [shape=circle];
+	Tampon [label="Tampon 0"] [shape=circle];
+	C1 [label="C1 0"] [shape=circle];
+	C2 [label="C2 1"] [shape=circle];
+
+	P1P2 [shape=box];
+	P2P1 [shape=box];
+	TC2 [shape=box];
+	C2C1 [shape=box];
+
+P1 -> P1P2
+;
+P1P2 -> P2
+;
+P2 -> P2P1
+;
+P2P1 -> P1
+;
+P2P1 -> Tampon
+;
+Tampon -> TC2
+;
+TC2 -> C2
+;
+C2 -> C2C1
+;
+C2C1 -> C1
+;
+C1 -> TC2
+;
+}
+
