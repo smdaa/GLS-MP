@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<simplepdl:Process
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:simplepdl="http://simplepdl"
+    xsi:schemaLocation="http://simplepdl SimplePDL.ecore">
+  <processElements
+      xsi:type="simplepdl:Ressource"
+      name="plat"
+      quantite="5"/>
+  <processElements
+      xsi:type="simplepdl:WorkDefinition"
+      linksToSuccessors="//@processElements.3"
+      name="cook"/>
+  <processElements
+      xsi:type="simplepdl:WorkDefinition"
+      linksToPredecessors="//@processElements.3"
+      name="eat"/>
+  <processElements
+      xsi:type="simplepdl:WorkSequence"
+      linkType="startToFinish"
+      predecessor="//@processElements.1"
+      successor="//@processElements.2"/>
+  <processElements
+      xsi:type="simplepdl:Ressource_Usage"
+      used_ressource="//@processElements.0"
+      user_WD="//@processElements.1"
+      quantite="2"/>
+  <processElements
+      xsi:type="simplepdl:Ressource_Usage"
+      used_ressource="//@processElements.0"
+      user_WD="//@processElements.2"
+      quantite="3"/>
+</simplepdl:Process>

@@ -177,7 +177,8 @@ la transformation nous donne le modèle Petrinet suivant:
 \end{figure}
 en utilisant le stepper analyser de l'outil netdraw notre modèle Petrinet semble avoir le comportement correcte.
 \subsubsection{Validation de la transformation avec l'outil selt}
-On génère les propriétés de sûreté du modèle conforme a SimplePDL en utilisant l'outil Acceleo (\textbf{voir toLTL.mtl})
+On génère les propriétés de sûreté du modèle conforme a SimplePDL et on vérifie la terminaision 
+du process en utilisant l'outil Acceleo (\textbf{voir toLTL.mtl})
 pour vérifier que les invariants sur le modèle de processus sont préservés sur le modèle de réseau de Petri correspondant. \\
 fichier simple.ltl généré :
 \begin{verbatim}
@@ -186,15 +187,13 @@ fichier simple.ltl généré :
     [] <> dead;
     [] (dead => finished);
     - <> finished;
-
-    [](-(cook_ready /\ cook_running));
-    [](-(cook_finished /\ cook_running));
-    [](-(cook_ready/\cook_finished));
-    [](-(eat_ready /\ eat_running));
-    [](-(eat_finished /\ eat_running));
-    [](-(eat_ready/\eat_finished));
+    
+    [] (cook_ready + cook_running + cook_finished = 1);
+    [] (cook_ready + cook_started = 1);
+    [] (eat_ready + eat_running + eat_finished = 1);
+    [] (eat_ready + eat_started = 1);
 \end{verbatim}
-Les 5 premières lignes c'est pour verifier que toutes les activités se terminent (on attend que propriété sera fausse et le model 
+Les 5 premières lignes c'est pour vérifier si toutes les activités se terminent (on attend que propriété sera fausse et le model 
 checker exhibera un contre-exemple qui correspond à un scénario qui correspond à la terminaison du processus) \\
 Les dernières lignes c'est pour vérifier chaque activité est soit non commencée, soit en cours, soit terminée.
 Resultat du verification :
@@ -213,7 +212,31 @@ la transformation nous donne le modèle Petrinet suivant:
     \centering
     \includegraphics[width = 10cm]{net-sujet.png}
 \end{figure}
-
+On remarque que le process simple termine toujours
+\subsubsection{Validation de la transformation avec l'outil selt}
+fichier simple.ltl généré :
+\begin{verbatim}
+    op finished = Conception_finished /\  RedactionDoc_finished /\  Developpement_finished /\  RedactionTests_finished  ; 
+    [] (finished => dead);
+    [] <> dead;
+    [] (dead => finished);
+    - <> finished;
+    
+    [] (Conception_ready + Conception_running + Conception_finished = 1);
+    [] (Conception_ready + Conception_started = 1);
+    [] (RedactionDoc_ready + RedactionDoc_running + RedactionDoc_finished = 1);
+    [] (RedactionDoc_ready + RedactionDoc_started = 1);
+    [] (Developpement_ready + Developpement_running + Developpement_finished = 1);
+    [] (Developpement_ready + Developpement_started = 1);
+    [] (RedactionTests_ready + RedactionTests_running + RedactionTests_finished = 1);
+    [] (RedactionTests_ready + RedactionTests_started = 1);
+\end{verbatim}
+Resultat du verification :
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 15cm]{selt-sujet.png}
+\end{figure}
+On remarque que le process sujet peut terminer
 
 
 \section{Transformation PetriNet vers Tina/dot en utilisant Acceleo}

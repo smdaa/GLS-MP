@@ -4,9 +4,7 @@ op finished = cook_finished /\  eat_finished  ;
 [] (dead => finished);
 - <> finished;
 
-[](-(cook_ready /\ cook_running));
-[](-(cook_finished /\ cook_running));
-[](-(cook_ready/\cook_finished));
-[](-(eat_ready /\ eat_running));
-[](-(eat_finished /\ eat_running));
-[](-(eat_ready/\eat_finished));
+[] (cook_ready + cook_running + cook_finished = 1);
+[] (cook_ready + cook_started = 1);
+[] (eat_ready + eat_running + eat_finished = 1);
+[] (eat_ready + eat_started = 1);

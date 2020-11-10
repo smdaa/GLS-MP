@@ -1,0 +1,16 @@
+net simple2
+pl cook_ready (1)
+pl cook_started (0)
+pl cook_running (0)
+pl cook_finished (0)
+pl eat_ready (1)
+pl eat_started (0)
+pl eat_running (0)
+pl eat_finished (0)
+pl plat (5)
+
+tr cook_start  cook_ready plat*2 ->  cook_started cook_running
+tr cook_finish  cook_running ->  cook_finished plat*2
+tr eat_start  eat_ready plat*3 ->  eat_started eat_running
+tr eat_finish  eat_running cook_started?1 ->  eat_finished plat*3
+

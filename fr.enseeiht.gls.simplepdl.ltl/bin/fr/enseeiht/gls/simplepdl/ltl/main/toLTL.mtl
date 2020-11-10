@@ -12,9 +12,8 @@ op finished = [for (wd : WorkDefinition | aProcess.get_wd())][wd.name/]_finished
 - <> finished;
 
 [for (wd : WorkDefinition | aProcess.get_wd())]
-['['/][']'/](-([wd.name/]_ready /\ [wd.name/]_running));
-['['/][']'/](-([wd.name/]_finished /\ [wd.name/]_running));
-['['/][']'/](-([wd.name/]_ready/\[wd.name/]_finished));
+['['/][']'/] ([wd.name/]_ready + [wd.name/]_running + [wd.name/]_finished = 1);
+['['/][']'/] ([wd.name/]_ready + [wd.name/]_started = 1);
 [/for]
 [/file]
 [/template]
