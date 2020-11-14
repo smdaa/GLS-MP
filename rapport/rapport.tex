@@ -99,10 +99,46 @@ Afin de capturer plus de contraintes On a ajouté les règles ocl suivantes (voi
 \end{itemize}
 
 \section{Un éditeur graphique SimplePDL}
+Une syntaxe concrète graphique fournit un moyen de visualiser et/ou éditer plus agréablement et efficacement un modèle. Nous allons utiliser l’outil Eclipse Sirius pour définir une syntaxe graphique pour SimplePDL en tenant en compte la notion de Guidance et des Ressources et d’engendrer un éditeur graphique intégré à Eclipse.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 18cm]{SiriusGraphic.png}
+    \caption{Editeur Graphique pour SimplePDL}
+\end{figure}
+
+
+Cet editeur est constistué d'une Vue graphique (partie gauche) et d'une Palette (partie droite) qui contient les outils nécessaires pour manipuler le modèle 
+
+\subsection{Palette: OutilsElement}
+C'est une section qui permet des créer les Elements du modèle:
+
+\begin{itemize}
+\item WDCreation: Création des noeuds WorkDefinition qui seront représentés par des ellipses de couleur Gris
+
+\item GuidanceCreation: Création des noeuds Guidance qui seront représentés par des rectangles de couleur Jaune
+
+\item RessourceCreation: Création des noeuds Ressource qui seront représentés par des losanges de couleur  Verte
+
+\end{itemize}
+
+
+\subsection{Palette: OutilsLinks}
+
+C'est une section qui permet des créer les liens entre les differents  du modèles:
+
+\begin{itemize}
+\item WSCreation: Création des WorkSequences qui sont des liens sous forme de traits orange continues  entre les WorkDefintions
+\item GuidanceEdgeCreation : Création des liens sous forme de traits gris en pointillé entre les Noeuds Guidance et les WorkDefinition
+\item RessourceUsageEdgeCreation : Création des des liens sous forme de traits rouge en pointillé entre les WorkDefinition et les noeuds Ressource.
+
+\end{itemize}
+
 
 \section{Syntaxe concrète textuelle de SimplePDL avec Xtext}
 Xtext consiste à définir une syntaxe concrète textuelle pour un DSML au travers d’une grammaire, et il permet aussi 
 de construire un métamodèle conforme à la syntaxe concrète décrite 
+
 \subsection{Définition de la syntaxe PDL1:}
 (voir \textbf{PDL1.xtext}) \\
 Un exemple de la syntaxe textuelle généré est donnée dans l'exemple ci-dessous.

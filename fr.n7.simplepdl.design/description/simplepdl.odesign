@@ -5,10 +5,10 @@
       <metamodel href="http://simplepdl#/"/>
       <defaultLayer name="Default">
         <nodeMappings name="WDNode" domainClass="simplepdl::WorkDefinition">
-          <style xsi:type="style:EllipseNodeDescription" sizeComputationExpression="8" labelPosition="node" resizeKind="NSEW">
-            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <style xsi:type="style:EllipseNodeDescription" borderSizeComputationExpression="2" labelSize="10" sizeComputationExpression="8" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
         </nodeMappings>
         <nodeMappings name="GuidanceNode" domainClass="simplepdl::Guidance">
@@ -27,7 +27,7 @@
         </nodeMappings>
         <edgeMappings name="WSEdge" sourceMapping="//@ownedViewpoints[name='simplepdlViewpoint%20']/@ownedRepresentations[name='ProcessDiagram']/@defaultLayer/@nodeMappings[name='WDNode']" targetMapping="//@ownedViewpoints[name='simplepdlViewpoint%20']/@ownedRepresentations[name='ProcessDiagram']/@defaultLayer/@nodeMappings[name='WDNode']" targetFinderExpression="feature:successor" sourceFinderExpression="feature:predecessor" domainClass="simplepdl::WorkSequence" useDomainElement="true">
           <style sizeComputationExpression="3">
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
             <centerLabelStyleDescription labelExpression="feature:linkType">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
@@ -42,8 +42,8 @@
           </style>
         </edgeMappings>
         <edgeMappings name="RessourceUsageEdge" sourceMapping="//@ownedViewpoints[name='simplepdlViewpoint%20']/@ownedRepresentations[name='ProcessDiagram']/@defaultLayer/@nodeMappings[name='WDNode']" targetMapping="//@ownedViewpoints[name='simplepdlViewpoint%20']/@ownedRepresentations[name='ProcessDiagram']/@defaultLayer/@nodeMappings[name='RessourceNode']" targetFinderExpression="feature:used_ressource" sourceFinderExpression="feature:user_WD" domainClass="simplepdl::Ressource_Usage" useDomainElement="true">
-          <style sizeComputationExpression="2">
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          <style lineStyle="dot" sizeComputationExpression="2" routingStyle="manhattan">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
             <centerLabelStyleDescription labelSize="12">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
@@ -112,7 +112,7 @@
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[source/]">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.eContainer()/]">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="simplepdl::Ressource_Usage" referenceName="processElements">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="user_WD" valueExpression="[source/]"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="used_ressource" valueExpression="[target/]"/>
